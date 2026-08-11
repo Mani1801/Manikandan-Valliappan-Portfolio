@@ -841,6 +841,22 @@
   .zoom-card.interactive-panel,.about-quote.interactive-panel,.meta-box.interactive-panel,.job.interactive-panel,.edu-item.interactive-panel,.featured-paper.interactive-panel,.paper-metric.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:62px}
   #experience .timeline > .job.interactive-panel,#experience .timeline > .job.interactive-panel:last-child{padding-bottom:62px}
   #skills .skill-card::after,#awards .compact-card::after{display:none}
+
+  /* Keep research metrics compact and readable on phones. */
+  .paper-metric.interactive-panel::after{display:none}
+  .paper-metric.interactive-panel{padding-bottom:16px}
+  @media(max-width:760px){
+    #research .featured-paper{display:block;width:100%;padding:22px 18px 68px;overflow:hidden}
+    #research .featured-paper h3{font-size:clamp(1.25rem,6vw,1.65rem);line-height:1.28;overflow-wrap:normal;word-break:normal;hyphens:none}
+    #research .featured-paper p{font-size:.92rem;line-height:1.7}
+    #research .paper-metrics{grid-template-columns:1fr;margin-top:26px;gap:10px}
+    #research .paper-metric{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;padding:14px 16px}
+    #research .paper-metric strong{flex:0 0 auto;font-size:1.15rem}
+    #research .paper-metric span{margin:0;text-align:right;max-width:20ch;line-height:1.4;word-break:normal;overflow-wrap:normal}
+    #research .paper-actions{display:grid;grid-template-columns:1fr;gap:10px}
+    #research .paper-actions .btn{width:100%;justify-content:center;text-align:center}
+    #research .paper-status{line-height:1.55;align-items:flex-start}
+  }
 </style>
 </head>
 <body>
