@@ -632,6 +632,8 @@
   .job.interactive-panel:hover::after,.edu-item.interactive-panel:hover::after,.skill-card.interactive-panel:hover::after,
   .featured-paper.interactive-panel:hover::after,.paper-metric.interactive-panel:hover::after,.compact-card.interactive-panel:hover::after,
   .org-card.interactive-panel:hover::after{opacity:1;transform:none}
+  .job.interactive-panel::after{top:auto;right:0;bottom:10px}
+  #experience .timeline > .job{padding-bottom:52px}
   .job.interactive-panel:hover,.edu-item.interactive-panel:hover,.skill-card.interactive-panel:hover,.featured-paper.interactive-panel:hover,
   .paper-metric.interactive-panel:hover,.compact-card.interactive-panel:hover,.org-card.interactive-panel:hover{
     transform:translateY(-7px) scale(1.01);border-color:rgba(63,209,201,.40);box-shadow:0 24px 58px rgba(0,0,0,.24);
@@ -741,7 +743,7 @@
   /* ---------- COMPACT EXPERIENCE CARDS ---------- */
   /* Keep responsibilities out of the timeline and show them only in the popup. */
   #experience .timeline > .job > ul{display:none;}
-  #experience .timeline > .job{padding-bottom:34px;}
+  #experience .timeline > .job{padding-bottom:52px;}
   #experience .timeline > .job:last-child{padding-bottom:0;}
   #experience .timeline > .job .job-org{margin-bottom:0;}
   #experience .timeline > .job{min-height:78px;}
