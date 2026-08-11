@@ -751,15 +751,17 @@
   .profile-modal-body .job > ul{display:block;}
 
   /* Reserve clear space for hover labels across content cards. */
-  .edu-item.interactive-panel,.skill-card.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:58px}
-  .edu-item.interactive-panel::after,.skill-card.interactive-panel::after,.compact-card.interactive-panel::after,.org-card.interactive-panel::after{top:auto;right:14px;bottom:14px}
+  .edu-item.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:58px}
+  .edu-item.interactive-panel::after,.compact-card.interactive-panel::after,.org-card.interactive-panel::after{top:auto;right:14px;bottom:14px}
   .featured-paper.interactive-panel{padding-top:58px}
   .paper-metric.interactive-panel::after{display:none}
+  .skill-card.interactive-panel::after{display:none}
+  .cursor-glow{display:none !important}
+  .zoom-card::before{display:none}
 </style>
 </head>
 <body>
 <div aria-hidden="true" class="scroll-progress"></div>
-<div aria-hidden="true" class="cursor-glow"></div>
 <header class="nav">
 <div class="nav-inner">
 <div class="mark">MK</div>
@@ -1257,7 +1259,6 @@
   const progress=document.querySelector('.scroll-progress');
   const header=document.querySelector('header.nav');
   const backTop=document.querySelector('.back-top');
-  const glow=document.querySelector('.cursor-glow');
   const toggle=document.querySelector('.nav-toggle');
   const menu=document.querySelector('.mobile-menu');
 
@@ -1286,20 +1287,6 @@
   },{threshold:.18});
   const aboutSection=document.querySelector('#about');
   if(aboutSection) cardObserver.observe(aboutSection);
-
-  document.querySelectorAll('.zoom-card').forEach(card=>{
-    card.addEventListener('pointermove',e=>{
-      const r=card.getBoundingClientRect();
-      card.style.setProperty('--cx',((e.clientX-r.left)/r.width*100)+'%');
-      card.style.setProperty('--cy',((e.clientY-r.top)/r.height*100)+'%');
-    });
-  });
-
-  window.addEventListener('pointermove',e=>{
-    document.documentElement.style.setProperty('--mx',e.clientX+'px');
-    document.documentElement.style.setProperty('--my',e.clientY+'px');
-    if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}
-  },{passive:true});
 
   backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
   if(toggle&&menu){
