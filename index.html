@@ -749,6 +749,12 @@
   #experience .timeline > .job{min-height:78px;}
   #experience .timeline > .job:focus-visible{outline:2px solid var(--teal);outline-offset:8px;border-radius:8px;}
   .profile-modal-body .job > ul{display:block;}
+
+  /* Reserve clear space for hover labels across content cards. */
+  .edu-item.interactive-panel,.skill-card.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:58px}
+  .edu-item.interactive-panel::after,.skill-card.interactive-panel::after,.compact-card.interactive-panel::after,.org-card.interactive-panel::after{top:auto;right:14px;bottom:14px}
+  .featured-paper.interactive-panel{padding-top:58px}
+  .paper-metric.interactive-panel::after{display:none}
 </style>
 </head>
 <body>
