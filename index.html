@@ -235,7 +235,7 @@
   .edu-item:first-child{border-top:none;}
   .edu-head{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
   .edu-title{font-family:var(--font-display); font-weight:600; font-size:1.05rem;}
-  .edu-date{font-family:var(--font-mono); font-size:0.8rem; color:var(--text-faint);}
+  .edu-date{font-family:var(--font-mono);font-size:0.8rem;color:var(--teal);font-weight:500;letter-spacing:.01em;}
   .edu-org{color:var(--text-dim); font-size:0.9rem; margin:4px 0 8px;}
   .edu-item p.note{color:var(--text-dim); font-size:0.92rem;}
 
@@ -751,20 +751,103 @@
   .profile-modal-body .job > ul{display:block;}
 
   /* Reserve clear space for hover labels across content cards. */
-  .edu-item.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:58px}
-  .edu-item.interactive-panel::after,.compact-card.interactive-panel::after,.org-card.interactive-panel::after{top:auto;right:14px;bottom:14px}
+  .edu-item.interactive-panel,.skill-card.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:58px}
+  .edu-item.interactive-panel::after,.skill-card.interactive-panel::after,.compact-card.interactive-panel::after,.org-card.interactive-panel::after{top:auto;right:14px;bottom:14px}
   .featured-paper.interactive-panel{padding-top:58px}
   .paper-metric.interactive-panel::after{display:none}
-  .skill-card.interactive-panel::after{display:none}
+  .skill-card.interactive-panel::after{opacity:.72;transform:none}
+  .skill-card.interactive-panel:hover::after{opacity:1}
   .cursor-glow{display:none !important}
   .zoom-card::before{display:none}
+
+  /* ---------- REFINED SKILLS DASHBOARD ---------- */
+  #skills .skill-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;background:transparent;border:0;overflow:visible}
+  #skills .skill-card{grid-column:span 2;min-height:250px;padding:24px;border:1px solid rgba(63,209,201,.2);border-radius:16px;background:linear-gradient(145deg,rgba(16,34,55,.92),rgba(9,22,39,.88));box-shadow:0 18px 45px rgba(0,0,0,.16);display:flex;flex-direction:column;overflow:hidden;isolation:isolate;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+  #skills .skill-card:nth-child(-n+2){grid-column:span 3}
+  #skills .skill-card::before{content:'';position:absolute;inset:auto -18% -45% 35%;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(63,209,201,.13),transparent 68%);z-index:-1;transition:transform .35s ease,opacity .35s ease}
+  #skills .skill-card::after{display:none}
+  #skills .skill-card:hover{transform:translateY(-7px);border-color:rgba(63,209,201,.56);box-shadow:0 25px 60px rgba(0,0,0,.28),0 0 28px rgba(63,209,201,.07)}
+  #skills .skill-card:hover::before{transform:translate(-12px,-14px) scale(1.1)}
+  .skill-card-top{display:flex;align-items:flex-start;gap:15px;margin-bottom:20px}
+  .skill-symbol{flex:0 0 44px;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;border:1px solid rgba(255,139,74,.3);background:rgba(255,139,74,.08);color:#ff8b4a;font-family:var(--font-mono);font-size:1.35rem;text-shadow:0 0 15px rgba(255,139,74,.45)}
+  #skills .skill-card h3{margin:2px 0 5px;font-family:var(--font-display);font-size:1rem;letter-spacing:.02em;color:var(--text);text-transform:none}
+  .skill-summary{color:var(--text-dim);font-size:.78rem;line-height:1.5}
+  #skills .tag-row{gap:8px}
+  #skills .tag{border-radius:999px;padding:6px 10px;border-color:rgba(63,209,201,.18);background:rgba(4,15,28,.34);font-size:.75rem;transition:border-color .2s ease,color .2s ease,transform .2s ease}
+  #skills .tag:hover{transform:translateY(-2px);border-color:rgba(63,209,201,.5);color:var(--teal)}
+  .skill-card-foot{margin-top:auto;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font-mono);font-size:.67rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint)}
+  .skill-open{padding:6px 10px;border-radius:999px;border:1px solid rgba(63,209,201,.3);color:var(--teal);background:rgba(63,209,201,.06);transition:background .2s ease,color .2s ease}
+  #skills .skill-card:hover .skill-open{background:var(--teal);color:#04120f}
+  @media(max-width:900px){#skills .skill-card,#skills .skill-card:nth-child(-n+2){grid-column:span 3}}
+  @media(max-width:620px){#skills .skill-grid{grid-template-columns:1fr}#skills .skill-card,#skills .skill-card:nth-child(-n+2){grid-column:1;min-height:220px}}
+
+  /* Crown monogram navigation logo. */
+  .mark{width:72px;height:64px;display:grid;place-items:center;flex:0 0 72px}
+  .mark img{display:block;width:70px;height:63px;object-fit:contain;background:transparent;border:0;border-radius:0;filter:none;box-shadow:none;transition:transform .25s ease}
+  .mark:hover img{transform:translateY(-2px) scale(1.04);filter:none;box-shadow:none}
+  @media(max-width:620px){.mark{width:58px;height:52px;flex-basis:58px}.mark img{width:56px;height:50px}}
+
+  /* ---------- MOBILE BROWSER POLISH + WARM ACCENTS ---------- */
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden;scroll-padding-top:92px}
+  body{overflow-x:hidden}
+  img{max-width:100%}
+  .section-head .eyebrow,.card-kicker,.featured-label,.pub .idx{color:#ff8b4a}
+  .interactive-panel.interactive-panel::after{color:#ff9a5f;border-color:rgba(255,139,74,.38);background:rgba(255,139,74,.09);text-shadow:0 0 10px rgba(255,139,74,.2)}
+  .skill-open{color:#ff9a5f;border-color:rgba(255,139,74,.38);background:rgba(255,139,74,.09);text-shadow:0 0 10px rgba(255,139,74,.2)}
+  #skills .skill-card:hover .skill-open{background:#ff8b4a;color:#160a03}
+  .about-explore-note{border-left:3px solid #ff8b4a}
+  @media(max-width:760px){
+    header.nav{padding-top:env(safe-area-inset-top)}
+    .nav-inner{padding:10px max(16px,env(safe-area-inset-right)) 10px max(16px,env(safe-area-inset-left));gap:10px}
+    .wrap{width:100%;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+    section{scroll-margin-top:84px}
+    .hero-inner.hero-dashboard{padding-top:78px;padding-bottom:24px}
+    .hero-main{width:100%;min-width:0}
+    .hero-copy,.portrait-stage{min-width:0}
+    .hero h1{overflow-wrap:anywhere}
+    .terminal-role{width:100%;line-height:1.65;overflow-wrap:anywhere}
+    .hero p.lede{max-width:none;text-align:left;line-height:1.75}
+    .hero-actions{width:100%;gap:10px}
+    .hero-actions .btn{flex:1 1 160px;text-align:center;justify-content:center}
+    .hero-portals{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .portal-card{min-width:0}
+    .section-head{align-items:flex-start}
+    .edu-head,.job-head{align-items:flex-start;gap:7px 14px}
+    .edu-date,.job-date{white-space:nowrap}
+    .featured-paper{min-width:0}
+    .paper-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .profile-modal{padding:12px;padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+    .profile-modal-dialog{max-height:calc(100dvh - 24px)}
+    button,.btn,.nav-cta,.portal-card,.interactive-panel{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  }
+  @media(max-width:480px){
+    .hero-portals{grid-template-columns:1fr}
+    .hero-actions .btn{flex-basis:100%}
+    .section-head h2{font-size:1.48rem}
+    .edu-head,.job-head{display:block}
+    .edu-date,.job-date{display:block;margin-top:7px}
+    .paper-metrics{grid-template-columns:1fr 1fr}
+    .contact-links{display:grid;width:100%;grid-template-columns:1fr}
+    .contact-links a{justify-content:center;text-align:center}
+  }
+  #awards .compact-card{display:flex;flex-direction:column;min-height:230px;padding:22px}
+  #awards .compact-card::after{display:none}
+  .award-open{align-self:flex-end;margin-top:auto;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,139,74,.38);color:#ff9a5f;background:rgba(255,139,74,.09);font-family:var(--font-mono);font-size:.67rem;letter-spacing:.05em;text-transform:uppercase;transition:background .2s ease,color .2s ease}
+  #awards .compact-card:hover .award-open{background:#ff8b4a;color:#160a03}
+
+  /* Consistent bottom-right Open action for every clickable panel. */
+  .interactive-panel.interactive-panel::after{content:'Open ↗';display:block;position:absolute;inset:auto 14px 14px auto;width:auto;height:auto;padding:6px 10px;border-radius:999px;opacity:.78;transform:none;color:#ff9a5f;border:1px solid rgba(255,139,74,.38);background:rgba(255,139,74,.09);font-family:var(--font-mono);font-size:.67rem;line-height:1.2;letter-spacing:.05em;text-transform:uppercase;text-shadow:none;box-shadow:none;transition:opacity .2s ease,background .2s ease,color .2s ease;z-index:3}
+  .interactive-panel.interactive-panel:hover::after{opacity:1;background:#ff8b4a;color:#160a03;transform:none}
+  .zoom-card.interactive-panel,.about-quote.interactive-panel,.meta-box.interactive-panel,.job.interactive-panel,.edu-item.interactive-panel,.featured-paper.interactive-panel,.paper-metric.interactive-panel,.compact-card.interactive-panel,.org-card.interactive-panel{padding-bottom:62px}
+  #experience .timeline > .job.interactive-panel,#experience .timeline > .job.interactive-panel:last-child{padding-bottom:62px}
+  #skills .skill-card::after,#awards .compact-card::after{display:none}
 </style>
 </head>
 <body>
 <div aria-hidden="true" class="scroll-progress"></div>
 <header class="nav">
 <div class="nav-inner">
-<div class="mark">MK</div>
+<a aria-label="Manikandan Valliappan — home" class="mark" href="#home"><img alt="Manikandan Valliappan crown monogram" src="mk-crown-logo.png"/></a>
 <nav class="links">
 <a href="#about">Profile</a>
 <a href="#experience">Experience</a>
@@ -899,7 +982,7 @@
 <span class="job-title">Visiting Research Scholar</span>
 <span class="job-date">02/2025 — 03/2025</span>
 </div>
-<div class="job-org">Université Grenoble Alpes · Grenoble, France · On-site</div>
+<div class="job-org">Université Grenoble Alpes · Grenoble, France</div>
 <ul>
 <li>Conducted a one-month visiting research stay focused on OpenFOAM and YADE-based particle–fluid simulation.</li>
 <li>Exchanged methods and research experience in CFD–DEM coupling and numerical modelling within an international research environment.</li>
@@ -1015,34 +1098,39 @@
 </div>
 <div class="skill-grid">
 <div class="skill-card interactive-panel" data-modal-title="Skill area">
-<h3>CFD Simulation</h3>
+<div class="skill-card-top"><span class="skill-symbol">≈</span><div><h3>CFD Simulation</h3><p class="skill-summary">Fluid-flow and multiphysics modelling</p></div></div>
 <div class="tag-row">
 <span class="tag">OpenFOAM</span><span class="tag">ANSYS Fluent</span><span class="tag">COMSOL Multiphysics</span><span class="tag">STAR-CCM+</span><span class="tag">Multiphase Flow</span>
 </div>
+<div class="skill-card-foot"><span>Simulation stack</span><span class="skill-open">Open ↗</span></div>
 </div>
 <div class="skill-card interactive-panel" data-modal-title="Skill area">
-<h3>Solver Development</h3>
+<div class="skill-card-top"><span class="skill-symbol">{ }</span><div><h3>Solver Development</h3><p class="skill-summary">Numerical implementation and verification</p></div></div>
 <div class="tag-row">
 <span class="tag">C++ solver modification</span><span class="tag">Numerical methods</span><span class="tag">Validation</span><span class="tag">Benchmarking</span><span class="tag">Debugging</span>
 </div>
+<div class="skill-card-foot"><span>Development stack</span><span class="skill-open">Open ↗</span></div>
 </div>
 <div class="skill-card interactive-panel" data-modal-title="Skill area">
-<h3>Programming</h3>
+<div class="skill-card-top"><span class="skill-symbol">&gt;_</span><div><h3>Programming</h3><p class="skill-summary">Scientific computing and automation</p></div></div>
 <div class="tag-row">
 <span class="tag">Python</span><span class="tag">C++</span><span class="tag">MATLAB</span><span class="tag">LaTeX</span>
 </div>
+<div class="skill-card-foot"><span>Computing stack</span><span class="skill-open">Open ↗</span></div>
 </div>
 <div class="skill-card interactive-panel" data-modal-title="Skill area">
-<h3>FEM Simulation</h3>
+<div class="skill-card-top"><span class="skill-symbol">△</span><div><h3>FEM Simulation</h3><p class="skill-summary">Structural analysis and parametric studies</p></div></div>
 <div class="tag-row">
 <span class="tag">ANSYS Workbench</span><span class="tag">ANSYS Mechanical APDL</span><span class="tag">ABAQUS</span>
 </div>
+<div class="skill-card-foot"><span>Analysis stack</span><span class="skill-open">Open ↗</span></div>
 </div>
-<div class="skill-card interactive-panel" data-modal-title="Skill area" style="grid-column:1/-1;">
-<h3>Design Software</h3>
+<div class="skill-card interactive-panel" data-modal-title="Skill area">
+<div class="skill-card-top"><span class="skill-symbol">◇</span><div><h3>Design Software</h3><p class="skill-summary">Mechanical design and engineering CAD</p></div></div>
 <div class="tag-row">
 <span class="tag">SOLIDWORKS</span><span class="tag">AutoCAD</span><span class="tag">CATIA V5</span>
 </div>
+<div class="skill-card-foot"><span>Design stack</span><span class="skill-open">Open ↗</span></div>
 </div>
 </div>
 </div>
@@ -1108,21 +1196,25 @@
 <h3>DAAD Scholarship</h3>
 <div class="issuer">German Academic Exchange Service &amp; German Federal Foreign Office · 04/2021</div>
 <p>Awarded for outstanding academic performance and achievements during the Master’s programme at TU Bergakademie Freiberg.</p>
+<span class="award-open">Open ↗</span>
 </article>
 <article class="compact-card interactive-panel" data-modal-title="Award detail">
 <h3>DAAD–STIBET Scholarship</h3>
 <div class="issuer">German Federal Foreign Office / DAAD · 10/2019</div>
 <p>Awarded for exceptional dedication and commitment as an international student.</p>
+<span class="award-open">Open ↗</span>
 </article>
 <article class="compact-card interactive-panel" data-modal-title="Award detail">
 <h3>Merit Scholarship</h3>
 <div class="issuer">Sethu Institute of Technology · 03/2017</div>
 <p>Awarded for achieving a grade of 91% in Mechanical Engineering.</p>
+<span class="award-open">Open ↗</span>
 </article>
 <article class="compact-card interactive-panel" data-modal-title="Award detail">
 <h3>Best Project Award — Aero Modelling</h3>
 <div class="issuer">Society of Automotive Engineers, India · SAE INDIA</div>
 <p>Awarded for excellence in project execution, innovation, and technical accuracy.</p>
+<span class="award-open">Open ↗</span>
 </article>
 </div>
 </div>
