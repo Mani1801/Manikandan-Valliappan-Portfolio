@@ -2469,6 +2469,97 @@
     .thesis-figure img{height:auto;max-height:560px}
   }
 
+
+  /* ---------- THESIS PURPOSE / MOTIVATION / FUTURE VALUE ---------- */
+  .thesis-purpose{
+    margin-top:26px;
+    padding-top:24px;
+    border-top:1px solid rgba(63,209,201,.15);
+  }
+
+  .thesis-purpose-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+    margin-top:18px;
+  }
+
+  .thesis-purpose-card{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px;
+    background:linear-gradient(145deg,rgba(7,24,42,.72),rgba(5,17,32,.54));
+  }
+
+  .thesis-purpose-card::after{
+    content:'';
+    position:absolute;
+    width:150px;
+    height:150px;
+    right:-70px;
+    bottom:-80px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(63,209,201,.07),transparent 68%);
+    pointer-events:none;
+  }
+
+  .purpose-index{
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    margin-bottom:12px;
+    border:1px solid rgba(255,139,74,.34);
+    border-radius:9px;
+    background:rgba(255,139,74,.07);
+    color:#ff9a5f;
+    font-family:var(--font-mono);
+    font-size:.68rem;
+  }
+
+  .thesis-purpose-card h5{
+    margin:0 0 9px;
+    font-family:var(--font-display);
+    font-size:1.02rem;
+    color:var(--text);
+  }
+
+  .thesis-purpose-card p,
+  .thesis-purpose-card li{
+    color:var(--text-dim);
+    font-size:.85rem;
+    line-height:1.72;
+  }
+
+  .thesis-purpose-card p + p{
+    margin-top:10px;
+  }
+
+  .thesis-purpose-card ul{
+    margin:10px 0 0 18px;
+  }
+
+  .thesis-purpose-card li{
+    margin-bottom:6px;
+  }
+
+  .thesis-purpose-card strong{
+    color:#dbe7f7;
+  }
+
+  .future-card{
+    border-color:rgba(63,209,201,.28);
+    background:linear-gradient(145deg,rgba(7,31,47,.78),rgba(5,21,36,.62));
+  }
+
+  @media(max-width:820px){
+    .thesis-purpose-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -2805,7 +2896,7 @@ Built a Python-based 2D axisymmetric FEM framework with J2 plasticity, nonlinear
 <div class="project-preview-kicker">Master's Thesis · Fraunhofer IPMS · 2022</div>
 <h3>Parametric Study of the Nano E-Drive Mechanism in Clamped-Clamped Beams</h3>
 <p>
-Developed nonlinear electromechanical FEM models in ANSYS APDL/MAPDL for prismatic and S-shaped Nano Electrostatic Drive beams, then combined parametric sweeps, Buckingham's Pi dimensional analysis, and regression modelling to derive geometry-performance relationships.
+Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano Electrostatic Drive beams to explain how geometry controls pull-in, deflection, charge and resonance behaviour—and to predict performance without rerunning a full FEM study for every design.
 </p>
 
 <div class="project-preview-tags">
@@ -3784,6 +3875,73 @@ Developed nonlinear electromechanical FEM models of prismatic and S-shaped Nano 
 <a class="btn btn-ghost" href="#contact" data-thesis-contact>Discuss this project</a>
 </div>
 </div>
+
+
+<section class="thesis-purpose">
+<div class="project-subhead">
+<span>Why this project?</span>
+<h4>From expensive FEM studies to reusable design relationships</h4>
+<p>
+The thesis was motivated by a practical design problem: Nano Electrostatic Drive actuators can deliver large displacement with low electrical power, but their electromechanical response is strongly nonlinear and highly dependent on geometry. The goal was not only to simulate individual designs, but to understand how geometry controls performance and to turn that understanding into reusable engineering models.
+</p>
+</div>
+
+<div class="thesis-purpose-grid">
+
+<article class="thesis-purpose-card">
+<div class="purpose-index">01</div>
+<h5>What already existed</h5>
+<p>
+NED actuators and finite-element models were already established, and optimization approaches such as genetic algorithms could search for good actuator designs. An analytical solution was also available for the simpler Coulomb-actuated prismatic beam.
+</p>
+<p>
+However, the thesis notes that an optimization algorithm can identify an optimum without clearly showing <strong>how each individual geometrical variable influences the actuator response</strong>. For the more complicated S-shaped NED geometry, a simple analytical description was also difficult because of the coupled electrostatic and structural nonlinearities.
+</p>
+</article>
+
+<article class="thesis-purpose-card">
+<div class="purpose-index">02</div>
+<h5>Why another study was needed</h5>
+<p>
+Important NED performance variables—such as pull-in voltage, deflection, charge and resonance frequency—are affected by Coulomb-force nonlinearity and stress stiffening. Changing dimensions such as beam thickness, electrostatic gap, recess or S-shaped electrode geometry changes several outputs at the same time.
+</p>
+<p>
+A conventional approach would therefore require repeated FEM simulations for every new geometry. The project sought a model that could expose these geometry–performance relationships directly rather than treating every design as an isolated simulation case.
+</p>
+</article>
+
+<article class="thesis-purpose-card">
+<div class="purpose-index">03</div>
+<h5>Detailed aim of the thesis</h5>
+<p>
+The central aim was to build a parametric modelling framework that connects the <strong>main geometrical parameters</strong> of clamped-clamped NED beams to their <strong>electromechanical performance variables</strong>.
+</p>
+<ul>
+<li>Develop an ANSYS APDL/MAPDL FEM script for a prismatic Coulomb-actuated microbeam.</li>
+<li>Extend the model to automated parametric sweeps.</li>
+<li>Verify prismatic-beam results against the available analytical solution.</li>
+<li>Develop a second FEM script for the more complex S-shaped NED beam.</li>
+<li>Apply Buckingham's Pi theorem to convert dimensional simulation variables into dimensionless groups.</li>
+<li>Use regression analysis to derive empirical relationships for pull-in voltage, charge, resonance frequency, effective acoustic area, electromechanical resonance frequency and displaced volume.</li>
+</ul>
+</article>
+
+<article class="thesis-purpose-card future-card">
+<div class="purpose-index">04</div>
+<h5>How the result can be useful</h5>
+<p>
+The main value of the resulting regression models is that selected actuator performance variables can be estimated from geometry <strong>without rerunning the full finite-element model for every design</strong>. The thesis identifies this as a way to reduce computational time and cost.
+</p>
+<p>
+Dimensionless scaling relationships can also help engineers compare geometries across different scales and assess alternative fabrication dimensions. In a design workflow, such relationships can serve as fast screening or preliminary-design models before high-fidelity FEM is used for final verification.
+</p>
+<p>
+The thesis also identifies further extension of the global analysis for the S-shaped NED actuator as a natural next step, with validation against the behaviour established for the prismatic beam.
+</p>
+</article>
+
+</div>
+</section>
 
 <div class="project-detail-grid thesis-method-grid">
 <div class="project-detail-card">
