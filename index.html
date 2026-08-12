@@ -2384,6 +2384,70 @@
     }
   }
 
+
+  /* =========================================================
+     CORRECTED PROJECT FIGURES
+     ========================================================= */
+  .equation-panel,
+  .equation-card{
+    display:none !important;
+  }
+
+  .overview-geometry-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:18px;
+  }
+
+  .overview-flowcharts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:16px;
+    align-items:start;
+  }
+
+  .overview-geometry-grid .project-overview-figure img{
+    width:100%;
+    height:330px;
+    object-fit:contain;
+    background:#fff;
+  }
+
+  .overview-flowchart-card img{
+    width:100%;
+    height:auto !important;
+    max-height:none !important;
+    object-fit:contain;
+    background:#fff;
+  }
+
+  .overview-flowchart-card{
+    align-self:start;
+  }
+
+  .tc-gallery.single{
+    grid-template-columns:1fr;
+  }
+
+  .tc-gallery.single .tc-figure img{
+    height:auto;
+    max-height:none;
+  }
+
+  @media(max-width:900px){
+    .overview-geometry-grid,
+    .overview-flowcharts{
+      grid-template-columns:1fr;
+    }
+
+    .overview-geometry-grid .project-overview-figure img{
+      height:auto;
+      max-height:560px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -3307,87 +3371,56 @@ The final elastic-plastic implementation recovered material parameters close to 
 </div>
 
 
+
 <div class="project-overview-block">
   <div class="project-subhead">
     <span>Project overview</span>
-    <h4>FEM workflow, geometry and key equations</h4>
-    <p>Before looking at the verification plots, the project first shows the finite-element logic, the axisymmetric geometry, and the governing equations used in the implementation.</p>
+    <h4>Geometry, mesh &amp; implementation workflow</h4>
+    <p>The project overview now shows the physical problem first, followed by the two complete implementation flowcharts. Verification plots are kept separately inside the 10 test cases below.</p>
   </div>
 
-  <div class="project-overview-grid">
-    
-<figure class="project-overview-figure project-overview-tall">
-  <a href="masters-project/overview/fem_flowchart_p17_1.png" target="_blank" rel="noopener">
-    <img src="masters-project/overview/fem_flowchart_p17_1.png" alt="Finite element program flowchart" loading="lazy">
-  </a>
-  <figcaption>
-    <strong>FEM program flowchart</strong>
-    <span>Overall program structure for mesh handling, state-variable update, element integration, global assembly, boundary conditions and Newton-Raphson solution.</span>
-  </figcaption>
-</figure>
+  <div class="overview-geometry-grid">
+    <figure class="project-overview-figure">
+      <a href="masters-project/overview/geometry_boundary_conditions.png" target="_blank" rel="noopener">
+        <img src="masters-project/overview/geometry_boundary_conditions.png" alt="Axisymmetric cylinder geometry and boundary conditions" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Geometry &amp; boundary conditions</strong>
+        <span>Axisymmetric cylinder compression problem used for the finite-element formulation.</span>
+      </figcaption>
+    </figure>
 
-
-    <div class="project-overview-stack">
-      
-<figure class="project-overview-figure ">
-  <a href="masters-project/overview/geometry_p8_1.png" target="_blank" rel="noopener">
-    <img src="masters-project/overview/geometry_p8_1.png" alt="2D axisymmetric cylinder geometry and boundary conditions" loading="lazy">
-  </a>
-  <figcaption>
-    <strong>Geometry & boundary conditions</strong>
-    <span>Axisymmetric compression of a cylinder with constrained radial motion at the contact surfaces.</span>
-  </figcaption>
-</figure>
-
-<figure class="project-overview-figure ">
-  <a href="masters-project/overview/geometry_p8_2.png" target="_blank" rel="noopener">
-    <img src="masters-project/overview/geometry_p8_2.png" alt="Four-element nine-node mesh representation" loading="lazy">
-  </a>
-  <figcaption>
-    <strong>Implemented mesh</strong>
-    <span>Four elements with nine nodes used in the finite-element implementation.</span>
-  </figcaption>
-</figure>
-
-
-      
-<figure class="project-overview-figure ">
-  <a href="masters-project/overview/parameter_flowchart_p16_1.png" target="_blank" rel="noopener">
-    <img src="masters-project/overview/parameter_flowchart_p16_1.png" alt="Parameter identification flowchart" loading="lazy">
-  </a>
-  <figcaption>
-    <strong>Parameter-identification flowchart</strong>
-    <span>Inverse loop connecting the FEM model, reference stress-strain data, residual evaluation and iterative parameter updates.</span>
-  </figcaption>
-</figure>
-
-    </div>
+    <figure class="project-overview-figure">
+      <a href="masters-project/overview/four_element_mesh.png" target="_blank" rel="noopener">
+        <img src="masters-project/overview/four_element_mesh.png" alt="Four element nine node finite element mesh" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Implemented mesh</strong>
+        <span>Four finite elements with nine nodes as documented in the project report.</span>
+      </figcaption>
+    </figure>
   </div>
 
-  <div class="equation-panel">
-    <div class="equation-card">
-      <span class="eq-label">Axisymmetric strain-displacement relation</span>
-      <div class="eq-block">ε = B U</div>
-      <p>Axisymmetric strains are assembled from nodal displacements using the standard strain-displacement matrix <strong>B</strong>.</p>
-    </div>
+  <div class="overview-flowcharts">
+    <figure class="project-overview-figure overview-flowchart-card">
+      <a href="masters-project/overview/fem_flowchart_full.png" target="_blank" rel="noopener">
+        <img src="masters-project/overview/fem_flowchart_full.png" alt="Complete finite element program flowchart" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>FEM program flowchart</strong>
+        <span>Complete finite-element program sequence, reconstructed from the two image halves stored in the original PDF.</span>
+      </figcaption>
+    </figure>
 
-    <div class="equation-card">
-      <span class="eq-label">Plastic loading check</span>
-      <div class="eq-block">φ<sub>trial</sub> = ‖ξ<sub>trial</sub>‖ − √(2/3) [σ<sub>y0</sub> + β<sub>trial</sub>]</div>
-      <p>The trial yield function determines whether the increment remains elastic or requires plastic correction.</p>
-    </div>
-
-    <div class="equation-card">
-      <span class="eq-label">Element integration</span>
-      <div class="eq-block">K<sub>ele</sub> = w · B<sup>T</sup> · C<sub>t</sub> · B · 2πr · |J|</div>
-      <p>Element stiffness is computed through Gauss quadrature in the axisymmetric setting.</p>
-    </div>
-
-    <div class="equation-card">
-      <span class="eq-label">Global Newton update</span>
-      <div class="eq-block">ΔU = K<sup>-1</sup> G</div>
-      <p>The reduced global system is solved iteratively until the residual and displacement-increment norms satisfy the convergence criteria.</p>
-    </div>
+    <figure class="project-overview-figure overview-flowchart-card">
+      <a href="masters-project/overview/parameter_identification_flowchart_full.png" target="_blank" rel="noopener">
+        <img src="masters-project/overview/parameter_identification_flowchart_full.png" alt="Complete parameter identification flowchart" loading="lazy">
+      </a>
+      <figcaption>
+        <strong>Parameter-identification flowchart</strong>
+        <span>Complete inverse-analysis loop coupling the FEM response, reference data, residuals and optimizer.</span>
+      </figcaption>
+    </figure>
   </div>
 </div>
 
@@ -3496,17 +3529,16 @@ The final elastic-plastic implementation recovered material parameters close to 
 </summary>
 <div class="tc-body">
 <div class="tc-result"><span>Reported outcome</span><p>The optimized polynomial coefficients were reported as close to the exact coefficients.</p></div>
-<div class="tc-gallery"><figure class="tc-figure">
-<a href="masters-project/test-cases/test06_p24_1.png" target="_blank" rel="noopener">
-<img src="masters-project/test-cases/test06_p24_1.png" alt="Gauss-Newton algorithm test - report result image 1" loading="lazy">
-</a>
-<figcaption>Report result image 1</figcaption>
-</figure><figure class="tc-figure">
-<a href="masters-project/test-cases/test06_p24_2.png" target="_blank" rel="noopener">
-<img src="masters-project/test-cases/test06_p24_2.png" alt="Gauss-Newton algorithm test - report result image 2" loading="lazy">
-</a>
-<figcaption>Report result image 2</figcaption>
-</figure></div>
+
+<div class="tc-gallery single">
+  <figure class="tc-figure">
+    <a href="masters-project/test-cases/test06_gauss_newton_full.png" target="_blank" rel="noopener">
+      <img src="masters-project/test-cases/test06_gauss_newton_full.png" alt="Complete Gauss-Newton polynomial verification plot" loading="lazy">
+    </a>
+    <figcaption>Complete Gauss-Newton verification figure from page 24</figcaption>
+  </figure>
+</div>
+
 </div>
 </details>
 <details class="test-case" id="test07">
@@ -3517,17 +3549,16 @@ The final elastic-plastic implementation recovered material parameters close to 
 </summary>
 <div class="tc-body">
 <div class="tc-result"><span>Reported outcome</span><p>The optimized coefficients were reported as close to the true coefficients and were compared with SciPy fitting.</p></div>
-<div class="tc-gallery"><figure class="tc-figure">
-<a href="masters-project/test-cases/test07_p26_1.png" target="_blank" rel="noopener">
-<img src="masters-project/test-cases/test07_p26_1.png" alt="Levenberg-Marquardt algorithm test - report result image 1" loading="lazy">
-</a>
-<figcaption>Report result image 1</figcaption>
-</figure><figure class="tc-figure">
-<a href="masters-project/test-cases/test07_p26_2.png" target="_blank" rel="noopener">
-<img src="masters-project/test-cases/test07_p26_2.png" alt="Levenberg-Marquardt algorithm test - report result image 2" loading="lazy">
-</a>
-<figcaption>Report result image 2</figcaption>
-</figure></div>
+
+<div class="tc-gallery single">
+  <figure class="tc-figure">
+    <a href="masters-project/test-cases/test07_levenberg_marquardt_full.png" target="_blank" rel="noopener">
+      <img src="masters-project/test-cases/test07_levenberg_marquardt_full.png" alt="Complete Levenberg-Marquardt polynomial verification plot" loading="lazy">
+    </a>
+    <figcaption>Complete Levenberg-Marquardt verification figure from page 26</figcaption>
+  </figure>
+</div>
+
 </div>
 </details>
 <details class="test-case" id="test08">
