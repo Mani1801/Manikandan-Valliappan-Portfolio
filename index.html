@@ -2220,6 +2220,40 @@
     }
   }
 
+
+  /* ---------- COMPLETE MASTER'S PROJECT TEST ARCHIVE ---------- */
+  .project-tests{margin-top:30px;padding-top:26px;border-top:1px solid rgba(63,209,201,.17)}
+  .project-subhead{margin-bottom:18px}
+  .project-subhead>span{display:block;margin-bottom:5px;color:var(--coral);font-family:var(--font-mono);font-size:.69rem;letter-spacing:.1em;text-transform:uppercase}
+  .project-subhead h4{font-family:var(--font-display);font-size:1.35rem;margin-bottom:6px}
+  .project-subhead p{color:var(--text-faint);font-size:.84rem;line-height:1.65}
+  .test-case{margin-bottom:10px;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:rgba(5,17,32,.45);transition:border-color .22s ease,background .22s ease}
+  .test-case[open]{border-color:rgba(63,209,201,.32);background:rgba(7,22,39,.68)}
+  .test-case summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:46px 1fr 32px;align-items:center;gap:12px;min-height:78px;padding:13px 16px;user-select:none}
+  .test-case summary::-webkit-details-marker{display:none}
+  .tc-number{width:42px;height:42px;display:grid;place-items:center;border-radius:11px;border:1px solid rgba(255,139,74,.32);background:rgba(255,139,74,.08);color:#ff9a5f;font-family:var(--font-mono);font-size:.72rem}
+  .tc-summary-copy strong{display:block;font-family:var(--font-display);font-size:.94rem;color:var(--text);margin-bottom:3px}
+  .tc-summary-copy small{display:block;color:var(--text-faint);font-size:.76rem;line-height:1.5}
+  .tc-chevron{justify-self:end;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:var(--teal);border:1px solid rgba(63,209,201,.24);transition:transform .22s ease,background .22s ease}
+  .test-case[open] .tc-chevron{transform:rotate(45deg);background:rgba(63,209,201,.08)}
+  .tc-body{padding:0 16px 18px 74px}
+  .tc-result{margin-bottom:14px;padding:12px 14px;border-left:2px solid var(--teal);background:rgba(63,209,201,.035);border-radius:0 9px 9px 0}
+  .tc-result>span{display:block;margin-bottom:3px;color:var(--teal);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase}
+  .tc-result p{color:var(--text-dim);font-size:.82rem;line-height:1.65}
+  .tc-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .tc-figure{min-width:0;border:1px solid var(--line);border-radius:11px;padding:8px;background:rgba(4,13,25,.65)}
+  .tc-figure img{width:100%;height:260px;object-fit:contain;border-radius:7px;background:#fff}
+  .tc-figure figcaption{padding:7px 3px 1px;color:var(--text-faint);font-family:var(--font-mono);font-size:.62rem}
+  .tc-no-figure{color:var(--text-faint);font-size:.8rem}
+  .development-note{border-color:rgba(255,139,74,.24)}
+  @media(max-width:760px){
+    .test-case summary{grid-template-columns:40px 1fr 28px;gap:9px;padding:12px}
+    .tc-number{width:38px;height:38px}
+    .tc-body{padding:0 12px 14px}
+    .tc-gallery{grid-template-columns:1fr}
+    .tc-figure img{height:auto;max-height:520px}
+  }
+
 </style>
 </head>
 <body>
@@ -3178,6 +3212,248 @@ The final elastic-plastic implementation recovered material parameters close to 
 <figcaption><strong>SciPy cross-check</strong><span>Independent curve fitting used to verify the implemented optimization workflow.</span></figcaption>
 </figure>
 </div>
+
+<section class="project-tests">
+<div class="project-subhead">
+<span>Verification archive</span>
+<h4>All 10 test cases &amp; report plots</h4>
+<p>Expand any test case to inspect the corresponding result images extracted directly from the Master's project report.</p>
+</div>
+
+<details class="test-case" id="test01">
+<summary>
+<span class="tc-number">01</span>
+<span class="tc-summary-copy"><strong>Manual calculation test</strong><small>Check the FEM elasticity implementation for a one-element, two-time-step case against manual calculation.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>Equivalent stress and strain from the FEM implementation were compared with the manual calculation and reported as verified.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test01_p18_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test01_p18_1.png" alt="Manual calculation test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test02">
+<summary>
+<span class="tc-number">02</span>
+<span class="tc-summary-copy"><strong>Unit test</strong><small>Validate individual code blocks/functions, including constitutive matrices, stress calculation, preprocessing, assembly, shape functions and nonlinear hardening.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The report states that the tested code blocks matched known values from the manual-calculation test.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test02_p19_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test02_p19_1.png" alt="Unit test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test03">
+<summary>
+<span class="tc-number">03</span>
+<span class="tc-summary-copy"><strong>Rigid body translation test</strong><small>Check the implemented FEM formulation under imposed rigid translation with no boundary constraints.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The report records zero stress and strain at all Gauss points and a 15 mm translation of each node.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test03_p20_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test03_p20_1.png" alt="Rigid body translation test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test03_p20_2.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test03_p20_2.png" alt="Rigid body translation test - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test04">
+<summary>
+<span class="tc-number">04</span>
+<span class="tc-summary-copy"><strong>Homogeneous boundary condition test</strong><small>Verify homogeneous deformation behavior under displacement-controlled compression.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>All Gauss points were reported to show the same stress and strain response; loading, Poisson and shear components behaved as described in the report.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test04_p21_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test04_p21_1.png" alt="Homogeneous boundary condition test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test04_p22_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test04_p22_1.png" alt="Homogeneous boundary condition test - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test05">
+<summary>
+<span class="tc-number">05</span>
+<span class="tc-summary-copy"><strong>Voce hardening test</strong><small>Check plastic behavior with isotropic nonlinear hardening using the Voce hardening law.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The implemented FEM plastic response was reported as closely matching the Voce hardening law.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test05_p23_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test05_p23_1.png" alt="Voce hardening test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test06">
+<summary>
+<span class="tc-number">06</span>
+<span class="tc-summary-copy"><strong>Gauss-Newton algorithm test</strong><small>Verify the implemented Gauss-Newton optimizer on a known polynomial parameter-estimation problem.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The optimized polynomial coefficients were reported as close to the exact coefficients.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test06_p24_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test06_p24_1.png" alt="Gauss-Newton algorithm test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test06_p24_2.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test06_p24_2.png" alt="Gauss-Newton algorithm test - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test07">
+<summary>
+<span class="tc-number">07</span>
+<span class="tc-summary-copy"><strong>Levenberg-Marquardt algorithm test</strong><small>Verify the implemented Levenberg-Marquardt optimizer on the same polynomial fitting problem.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The optimized coefficients were reported as close to the true coefficients and were compared with SciPy fitting.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test07_p26_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test07_p26_1.png" alt="Levenberg-Marquardt algorithm test - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test07_p26_2.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test07_p26_2.png" alt="Levenberg-Marquardt algorithm test - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test08">
+<summary>
+<span class="tc-number">08</span>
+<span class="tc-summary-copy"><strong>Elastic-plastic parameter identification - Levenberg-Marquardt</strong><small>Identify five material parameters by fitting FEM stress-strain response to reference data using Levenberg-Marquardt.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The optimized stress-strain response was reported as closely matching the reference data. Numerical tables remain available in the full report.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test08_p27_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test08_p27_1.png" alt="Elastic-plastic parameter identification - Levenberg-Marquardt - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test08_p28_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test08_p28_1.png" alt="Elastic-plastic parameter identification - Levenberg-Marquardt - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test08_p28_2.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test08_p28_2.png" alt="Elastic-plastic parameter identification - Levenberg-Marquardt - report result image 3" loading="lazy">
+</a>
+<figcaption>Report result image 3</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test08_p29_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test08_p29_1.png" alt="Elastic-plastic parameter identification - Levenberg-Marquardt - report result image 4" loading="lazy">
+</a>
+<figcaption>Report result image 4</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test09">
+<summary>
+<span class="tc-number">09</span>
+<span class="tc-summary-copy"><strong>Elastic-plastic parameter identification - Gauss-Newton</strong><small>Identify the same five elastic-plastic material parameters using the implemented Gauss-Newton procedure.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The recovered parameters and optimized stress-strain response were reported as close to the exact/reference solution.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test09_p30_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test09_p30_1.png" alt="Elastic-plastic parameter identification - Gauss-Newton - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test09_p31_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test09_p31_1.png" alt="Elastic-plastic parameter identification - Gauss-Newton - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test09_p31_2.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test09_p31_2.png" alt="Elastic-plastic parameter identification - Gauss-Newton - report result image 3" loading="lazy">
+</a>
+<figcaption>Report result image 3</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/test09_p32_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test09_p32_1.png" alt="Elastic-plastic parameter identification - Gauss-Newton - report result image 4" loading="lazy">
+</a>
+<figcaption>Report result image 4</figcaption>
+</figure></div>
+</div>
+</details>
+<details class="test-case" id="test10">
+<summary>
+<span class="tc-number">10</span>
+<span class="tc-summary-copy"><strong>SciPy curve-fit verification</strong><small>Cross-check the implemented optimization algorithms against SciPy curve fitting.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Reported outcome</span><p>The report compares SciPy-optimized parameters with the in-house algorithms and reports close agreement with the reference behavior.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/test10_p33_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/test10_p33_1.png" alt="SciPy curve-fit verification - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure></div>
+</div>
+</details>
+
+<details class="test-case development-note">
+<summary>
+<span class="tc-number">DEV</span>
+<span class="tc-summary-copy"><strong>Elastic-viscoplastic development attempt</strong><small>The report documents the earlier non-converged viscoplastic implementation, observed sign/convergence issues, and the reason for changing the final verified scope to elastic-plastic behavior.</small></span>
+<span class="tc-chevron" aria-hidden="true">+</span>
+</summary>
+<div class="tc-body">
+<div class="tc-result"><span>Development record</span><p>Included for technical transparency because these results and limitations are explicitly documented in the original report.</p></div>
+<div class="tc-gallery"><figure class="tc-figure">
+<a href="masters-project/test-cases/viscoplastic_attempt_p35_1.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/viscoplastic_attempt_p35_1.png" alt="Elastic-viscoplastic development attempt - report result image 1" loading="lazy">
+</a>
+<figcaption>Report result image 1</figcaption>
+</figure><figure class="tc-figure">
+<a href="masters-project/test-cases/viscoplastic_attempt_p35_2.png" target="_blank" rel="noopener">
+<img src="masters-project/test-cases/viscoplastic_attempt_p35_2.png" alt="Elastic-viscoplastic development attempt - report result image 2" loading="lazy">
+</a>
+<figcaption>Report result image 2</figcaption>
+</figure></div>
+</div>
+</details>
+</section>
+
 </div>
 </div>
 
