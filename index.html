@@ -2254,6 +2254,136 @@
     .tc-figure img{height:auto;max-height:520px}
   }
 
+
+  /* =========================================================
+     MASTER'S PROJECT OVERVIEW REPLACES REPEATED TOP PLOTS
+     ========================================================= */
+  .project-overview-block{
+    margin-top:22px;
+  }
+
+  .project-overview-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+    gap:16px;
+    margin-top:18px;
+  }
+
+  .project-overview-stack{
+    display:grid;
+    gap:16px;
+  }
+
+  .project-overview-figure{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:10px;
+    background:rgba(5,17,32,.62);
+  }
+
+  .project-overview-figure img{
+    width:100%;
+    height:280px;
+    object-fit:contain;
+    border-radius:8px;
+    background:#f7f7f7;
+  }
+
+  .project-overview-figure.project-overview-tall img{
+    height:100%;
+    min-height:720px;
+  }
+
+  .project-overview-figure figcaption{
+    padding:10px 4px 3px;
+  }
+
+  .project-overview-figure strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:.94rem;
+    margin-bottom:4px;
+    color:var(--text);
+  }
+
+  .project-overview-figure span{
+    display:block;
+    color:var(--text-faint);
+    font-size:.78rem;
+    line-height:1.55;
+  }
+
+  .equation-panel{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:18px;
+  }
+
+  .equation-card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 18px 16px;
+    background:rgba(5,17,32,.56);
+  }
+
+  .eq-label{
+    display:block;
+    margin-bottom:8px;
+    color:var(--coral);
+    font-family:var(--font-mono);
+    font-size:.68rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+
+  .eq-block{
+    margin-bottom:10px;
+    padding:10px 12px;
+    border:1px solid rgba(63,209,201,.16);
+    border-radius:10px;
+    background:rgba(63,209,201,.04);
+    color:var(--teal);
+    font-family:var(--font-display);
+    font-size:1rem;
+    line-height:1.55;
+    overflow-wrap:anywhere;
+  }
+
+  .equation-card p{
+    color:var(--text-dim);
+    font-size:.83rem;
+    line-height:1.65;
+  }
+
+  @media(max-width:920px){
+    .project-overview-grid,
+    .equation-panel{
+      grid-template-columns:1fr;
+    }
+
+    .project-overview-figure.project-overview-tall img{
+      min-height:unset;
+      height:auto;
+      max-height:760px;
+    }
+  }
+
+  @media(max-width:560px){
+    .project-overview-figure img{
+      height:auto;
+      max-height:520px;
+    }
+
+    .equation-card{
+      padding:15px 14px 14px;
+    }
+
+    .eq-block{
+      font-size:.92rem;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -3176,41 +3306,89 @@ The final elastic-plastic implementation recovered material parameters close to 
 </div>
 </div>
 
-<div class="project-detail-gallery">
-<figure class="project-detail-figure">
-<a href="masters-project/parameter_identification_flowchart.png" target="_blank" rel="noopener">
-<img src="masters-project/parameter_identification_flowchart.png" alt="Parameter identification workflow" loading="lazy">
-</a>
-<figcaption><strong>Parameter-identification workflow</strong><span>FEM response, residual evaluation and iterative parameter updates.</span></figcaption>
+
+<div class="project-overview-block">
+  <div class="project-subhead">
+    <span>Project overview</span>
+    <h4>FEM workflow, geometry and key equations</h4>
+    <p>Before looking at the verification plots, the project first shows the finite-element logic, the axisymmetric geometry, and the governing equations used in the implementation.</p>
+  </div>
+
+  <div class="project-overview-grid">
+    
+<figure class="project-overview-figure project-overview-tall">
+  <a href="masters-project/overview/fem_flowchart_p17_1.png" target="_blank" rel="noopener">
+    <img src="masters-project/overview/fem_flowchart_p17_1.png" alt="Finite element program flowchart" loading="lazy">
+  </a>
+  <figcaption>
+    <strong>FEM program flowchart</strong>
+    <span>Overall program structure for mesh handling, state-variable update, element integration, global assembly, boundary conditions and Newton-Raphson solution.</span>
+  </figcaption>
 </figure>
 
-<figure class="project-detail-figure">
-<a href="masters-project/manual_fem_verification.png" target="_blank" rel="noopener">
-<img src="masters-project/manual_fem_verification.png" alt="Manual FEM verification plot" loading="lazy">
-</a>
-<figcaption><strong>Manual FEM verification</strong><span>Python FEM result checked against manual calculation.</span></figcaption>
+
+    <div class="project-overview-stack">
+      
+<figure class="project-overview-figure ">
+  <a href="masters-project/overview/geometry_p8_1.png" target="_blank" rel="noopener">
+    <img src="masters-project/overview/geometry_p8_1.png" alt="2D axisymmetric cylinder geometry and boundary conditions" loading="lazy">
+  </a>
+  <figcaption>
+    <strong>Geometry & boundary conditions</strong>
+    <span>Axisymmetric compression of a cylinder with constrained radial motion at the contact surfaces.</span>
+  </figcaption>
 </figure>
 
-<figure class="project-detail-figure">
-<a href="masters-project/voce_hardening_verification.png" target="_blank" rel="noopener">
-<img src="masters-project/voce_hardening_verification.png" alt="Voce hardening verification plot" loading="lazy">
-</a>
-<figcaption><strong>Voce-hardening verification</strong><span>Implemented plastic response compared with nonlinear hardening law.</span></figcaption>
+<figure class="project-overview-figure ">
+  <a href="masters-project/overview/geometry_p8_2.png" target="_blank" rel="noopener">
+    <img src="masters-project/overview/geometry_p8_2.png" alt="Four-element nine-node mesh representation" loading="lazy">
+  </a>
+  <figcaption>
+    <strong>Implemented mesh</strong>
+    <span>Four elements with nine nodes used in the finite-element implementation.</span>
+  </figcaption>
 </figure>
 
-<figure class="project-detail-figure">
-<a href="masters-project/parameter_curve_fit.png" target="_blank" rel="noopener">
-<img src="masters-project/parameter_curve_fit.png" alt="Optimized material parameter curve fit" loading="lazy">
-</a>
-<figcaption><strong>Inverse parameter curve fit</strong><span>Noisy reference data, exact response and optimized material response.</span></figcaption>
+
+      
+<figure class="project-overview-figure ">
+  <a href="masters-project/overview/parameter_flowchart_p16_1.png" target="_blank" rel="noopener">
+    <img src="masters-project/overview/parameter_flowchart_p16_1.png" alt="Parameter identification flowchart" loading="lazy">
+  </a>
+  <figcaption>
+    <strong>Parameter-identification flowchart</strong>
+    <span>Inverse loop connecting the FEM model, reference stress-strain data, residual evaluation and iterative parameter updates.</span>
+  </figcaption>
 </figure>
 
-<figure class="project-detail-figure">
-<a href="masters-project/scipy_curve_fit.png" target="_blank" rel="noopener">
-<img src="masters-project/scipy_curve_fit.png" alt="SciPy curve fit verification" loading="lazy">
-</a>
-<figcaption><strong>SciPy cross-check</strong><span>Independent curve fitting used to verify the implemented optimization workflow.</span></figcaption>
-</figure>
+    </div>
+  </div>
+
+  <div class="equation-panel">
+    <div class="equation-card">
+      <span class="eq-label">Axisymmetric strain-displacement relation</span>
+      <div class="eq-block">ε = B U</div>
+      <p>Axisymmetric strains are assembled from nodal displacements using the standard strain-displacement matrix <strong>B</strong>.</p>
+    </div>
+
+    <div class="equation-card">
+      <span class="eq-label">Plastic loading check</span>
+      <div class="eq-block">φ<sub>trial</sub> = ‖ξ<sub>trial</sub>‖ − √(2/3) [σ<sub>y0</sub> + β<sub>trial</sub>]</div>
+      <p>The trial yield function determines whether the increment remains elastic or requires plastic correction.</p>
+    </div>
+
+    <div class="equation-card">
+      <span class="eq-label">Element integration</span>
+      <div class="eq-block">K<sub>ele</sub> = w · B<sup>T</sup> · C<sub>t</sub> · B · 2πr · |J|</div>
+      <p>Element stiffness is computed through Gauss quadrature in the axisymmetric setting.</p>
+    </div>
+
+    <div class="equation-card">
+      <span class="eq-label">Global Newton update</span>
+      <div class="eq-block">ΔU = K<sup>-1</sup> G</div>
+      <p>The reduced global system is solved iteratively until the residual and displacement-increment norms satisfy the convergence criteria.</p>
+    </div>
+  </div>
 </div>
 
 <section class="project-tests">
