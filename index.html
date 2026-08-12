@@ -2605,10 +2605,51 @@
     text-transform:uppercase !important;
   }
 
+
+  /* =========================================================
+     FINAL PORTFOLIO REFINEMENT
+     ========================================================= */
+
+  /* Older/supporting experience remains readable but does not compete
+     with TU Clausthal / Fraunhofer technical work. */
+  .experience-secondary{
+    opacity:.78;
+    transform:scale(.985);
+    transform-origin:center top;
+  }
+
+  .experience-secondary:hover{
+    opacity:1;
+  }
+
+  /* Keep front-page project cards visually separated. */
+  #projects .project-preview + .project-preview{
+    margin-top:18px;
+  }
+
+  /* Slightly stronger hierarchy for main technical sections. */
+  #experience .section-head,
+  #projects .section-head,
+  #research .section-head{
+    margin-bottom:26px;
+  }
+
+  /* Footer metric should not leave an awkward gap if hidden. */
+  .footer-views[style*="display: none"]{
+    display:none !important;
+  }
+
+  @media(max-width:760px){
+    .experience-secondary{
+      transform:none;
+      opacity:.86;
+    }
+  }
+
 </style>
 </head>
 <body>
-<div aria-hidden="true" class="scroll-progress"></div>
+<div aria-hidden="true" class="experience-secondary scroll-progress"></div>
 <header class="nav">
 <div class="nav-inner">
 <a aria-label="Manikandan Valliappan — home" class="mark" href="#home"><img alt="Manikandan Valliappan crown monogram" src="mk-crown-logo.png"/></a>
@@ -2677,7 +2718,7 @@
     </p>
 <div class="about-explore-note">Click any card below to open a focused zoom view with more detail.</div>
 <div class="zoom-story">
-<article class="zoom-card interactive-panel" data-panel="tools">
+<article class="experience-secondary zoom-card interactive-panel" data-panel="tools">
 <div class="card-kicker">What I do</div>
 <h3>Develop physics-based simulation tools</h3>
 <p>I modify and extend OpenFOAM solvers for CFD–DEM coupling, implement particle–fluid momentum exchange, improve MPI communication, and connect OpenFOAM with YADE for engineering-scale particle–fluid simulations.</p>
@@ -2784,7 +2825,7 @@
 <span class="job-title">CAD/CAE Project Intern</span>
 <span class="job-date">11/2016 — 04/2017</span>
 </div>
-<div class="job-org">Ashok Leyland · Chennai, India · Full-time</div>
+<div class="experience-secondary job-org">Ashok Leyland · Chennai, India · Full-time</div>
 <ul>
 <li>Worked on a mechanical-engineering project involving CAD/CAE methods, ANSYS Workbench, and Python-supported analysis.</li>
 <li>Contributed to the final-year project on reducing process time through an automatic nut-runner application in commercial-vehicle manufacturing.</li>
@@ -2801,7 +2842,7 @@
 <li>Coordinated the technical team and supported concept development, design decisions, and competition preparation.</li>
 </ul>
 </div>
-<div aria-label="Open details for Campus Ambassador" class="job interactive-panel" data-modal-title="Campus Ambassador">
+<div aria-label="Open details for Campus Ambassador" class="experience-secondary job interactive-panel" data-modal-title="Campus Ambassador">
 <div class="job-head">
 <span class="job-title">Campus Ambassador</span>
 <span class="job-date">04/2016 — 03/2017</span>
@@ -2816,7 +2857,7 @@
 <span class="job-title">Intern</span>
 <span class="job-date">03/2015 — 06/2015</span>
 </div>
-<div class="job-org">Cummins India · India · Full-time</div>
+<div class="experience-secondary job-org">Cummins India · India · Full-time</div>
 <ul>
 <li>Gained early industrial exposure in a professional engineering and manufacturing environment.</li>
 </ul>
@@ -2844,7 +2885,7 @@
 <span class="edu-date">10/2018 — 03/2022</span>
 </div>
 <div class="edu-org">Technische Universität Bergakademie Freiberg · Freiberg, Germany</div>
-<p class="note">Master's thesis: <em>Parametric Study of the Nano E-Drive Mechanism in Clamped-Clamped Beams</em>, carried out at Fraunhofer IPMS. Focus areas: CFD, FEM analysis, numerical simulation, and material modelling.</p>
+<p class="note">Master's thesis: <em>Parametric Study of the Nano E-Drive Mechanism in Clamped-Clamped Beams</em>, carried out at Fraunhofer IPMS. Focus areas: nonlinear electromechanical FEM, MEMS/NED modelling, parametric simulation, dimensional analysis, and regression modelling.</p>
 </div>
 <div class="edu-item interactive-panel" data-modal-title="Education detail">
 <div class="edu-head">
@@ -2976,7 +3017,7 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
 <div class="paper-kicker">Featured doctoral research</div>
 <h3>Coupled CFD–DEM Simulation of Particle–Fluid Systems Using OpenFOAM and YADE: Solver Development, Formulation and Verification</h3>
 <p>Development and verification of three OpenFOAM–YADE solvers—<em>icoFoamYade</em>, <em>pisoFoamYade</em>, and <em>pimpleFoamYade</em>—including rank-aware particle localization, Gaussian particle–mesh transfer, bounded volume-fraction mapping, semi-implicit momentum exchange, corrected buoyancy and torque treatment, and strengthened MPI communication.</p>
-<div class="paper-status">Open Geomechanics manuscript · DOI pending</div>
+<div class="paper-status">Open Geomechanics manuscript</div>
 <div class="paper-actions">
 <a class="btn btn-primary" href="Manikandan_Valliappan_CFD_DEM_Paper.pdf" rel="noopener" target="_blank">Read paper ↗</a>
 <a class="btn btn-ghost" href="#contact">Discuss this work</a>
@@ -3140,7 +3181,7 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
 <footer>
   <div class="footer-inner">
     <div class="footer-views">
-      Portfolio views · <span id="portfolio-view-count" aria-live="polite">—</span>
+      Portfolio views · <span id="portfolio-view-count" aria-live="polite">loading</span>
     </div>
 
     <div class="footer-center">
@@ -3459,8 +3500,8 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
       counterEl.title = 'Live portfolio page views';
     })
     .catch(function () {
-      counterEl.textContent = '—';
-      counterEl.title = 'View count temporarily unavailable';
+      const viewsWrap = counterEl.closest('.footer-views');
+      if (viewsWrap) viewsWrap.style.display = 'none';
     });
 })();
 </script>
