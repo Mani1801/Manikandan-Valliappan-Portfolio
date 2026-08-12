@@ -1118,6 +1118,1108 @@
     }
   }
 
+
+  /* ---------- SHRINKING STICKY HEADER ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    transition:
+      background .3s ease,
+      box-shadow .3s ease,
+      border-color .3s ease;
+  }
+
+  .nav-inner{
+    transition:
+      padding .3s ease,
+      min-height .3s ease;
+  }
+
+  .mark{
+    transition:
+      width .3s ease,
+      height .3s ease,
+      flex-basis .3s ease;
+  }
+
+  .mark img{
+    transition:
+      width .3s ease,
+      height .3s ease,
+      transform .25s ease;
+  }
+
+  nav.links{
+    transition:gap .3s ease;
+  }
+
+  nav.links a,
+  .nav-cta{
+    transition:
+      font-size .3s ease,
+      padding .3s ease,
+      color .2s ease,
+      border-color .2s ease,
+      background .2s ease,
+      transform .2s ease;
+  }
+
+  header.nav.compact{
+    background:rgba(5,13,26,.96);
+    border-bottom-color:rgba(63,209,201,.22);
+    box-shadow:0 12px 36px rgba(0,0,0,.28);
+    backdrop-filter:blur(20px);
+  }
+
+  header.nav.compact .nav-inner{
+    padding-top:7px;
+    padding-bottom:7px;
+  }
+
+  header.nav.compact .mark{
+    width:52px;
+    height:44px;
+    flex-basis:52px;
+  }
+
+  header.nav.compact .mark img{
+    width:50px;
+    height:43px;
+  }
+
+  header.nav.compact nav.links{
+    gap:24px;
+  }
+
+  header.nav.compact nav.links a{
+    font-size:.86rem;
+  }
+
+  header.nav.compact .nav-cta{
+    font-size:.76rem;
+    padding:7px 12px;
+  }
+
+  @media(max-width:760px){
+    header.nav.compact .nav-inner{
+      padding-top:6px;
+      padding-bottom:6px;
+    }
+
+    header.nav.compact .mark{
+      width:46px;
+      height:40px;
+      flex-basis:46px;
+    }
+
+    header.nav.compact .mark img{
+      width:44px;
+      height:39px;
+    }
+  }
+
+
+  /* =========================================================
+     FIXED NAVIGATION — LARGE LOGO AT TOP, COMPACT ON SCROLL
+     ========================================================= */
+
+  /* Header is always visible while the visitor scrolls. */
+  header.nav{
+    position:fixed !important;
+    top:0;
+    left:0;
+    right:0;
+    width:100%;
+    z-index:5000;
+    background:rgba(5,13,26,.90) !important;
+    border-bottom:1px solid rgba(63,209,201,.14);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    transition:
+      background .32s ease,
+      box-shadow .32s ease,
+      border-color .32s ease;
+  }
+
+  /* Leave room for the fixed header at the top of the page. */
+  body{
+    padding-top:108px;
+  }
+
+  /* Expanded header shown at the top of the page. */
+  header.nav .nav-inner{
+    max-width:1380px;
+    min-height:108px;
+    margin:0 auto;
+    padding:10px 36px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:26px;
+    transition:
+      min-height .35s cubic-bezier(.2,.8,.2,1),
+      padding .35s cubic-bezier(.2,.8,.2,1);
+  }
+
+  /* Large MK logo at page top. */
+  header.nav .mark{
+    width:94px !important;
+    height:86px !important;
+    flex:0 0 94px !important;
+    display:grid;
+    place-items:center;
+    transition:
+      width .35s cubic-bezier(.2,.8,.2,1),
+      height .35s cubic-bezier(.2,.8,.2,1),
+      flex-basis .35s cubic-bezier(.2,.8,.2,1);
+  }
+
+  header.nav .mark img{
+    width:90px !important;
+    height:82px !important;
+    object-fit:contain;
+    transform:translateZ(0);
+    transition:
+      width .35s cubic-bezier(.2,.8,.2,1),
+      height .35s cubic-bezier(.2,.8,.2,1),
+      transform .25s ease !important;
+  }
+
+  header.nav .mark:hover img{
+    transform:translateY(-2px) scale(1.03);
+  }
+
+  header.nav nav.links{
+    gap:34px;
+    transition:gap .35s ease;
+  }
+
+  header.nav nav.links a{
+    font-size:.94rem;
+    transition:
+      font-size .35s ease,
+      color .2s ease;
+  }
+
+  header.nav .nav-cta{
+    font-size:.82rem;
+    padding:10px 18px;
+    transition:
+      padding .35s ease,
+      font-size .35s ease,
+      background .2s ease,
+      color .2s ease,
+      border-color .2s ease,
+      transform .2s ease;
+  }
+
+  /* ---------------------------------------------------------
+     COMPACT HEADER AFTER SCROLL
+     --------------------------------------------------------- */
+  header.nav.compact{
+    background:rgba(5,13,26,.975) !important;
+    border-bottom-color:rgba(63,209,201,.26);
+    box-shadow:0 12px 38px rgba(0,0,0,.32);
+  }
+
+  header.nav.compact .nav-inner{
+    min-height:64px;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+
+  header.nav.compact .mark{
+    width:54px !important;
+    height:52px !important;
+    flex-basis:54px !important;
+  }
+
+  header.nav.compact .mark img{
+    width:50px !important;
+    height:48px !important;
+  }
+
+  header.nav.compact nav.links{
+    gap:27px;
+  }
+
+  header.nav.compact nav.links a{
+    font-size:.88rem;
+  }
+
+  header.nav.compact .nav-cta{
+    font-size:.76rem;
+    padding:7px 13px;
+  }
+
+  /* Make section links stop below the fixed toolbar. */
+  section,
+  #home,
+  #about,
+  #experience,
+  #education,
+  #skills,
+  #research,
+  #awards,
+  #organizations,
+  #contact{
+    scroll-margin-top:82px;
+  }
+
+  /* Tablet / mobile */
+  @media(max-width:900px){
+    body{
+      padding-top:88px;
+    }
+
+    header.nav .nav-inner{
+      min-height:88px;
+      padding:8px 22px;
+    }
+
+    header.nav .mark{
+      width:72px !important;
+      height:68px !important;
+      flex-basis:72px !important;
+    }
+
+    header.nav .mark img{
+      width:68px !important;
+      height:64px !important;
+    }
+
+    header.nav.compact .nav-inner{
+      min-height:60px;
+      padding-top:5px;
+      padding-bottom:5px;
+    }
+
+    header.nav.compact .mark{
+      width:48px !important;
+      height:46px !important;
+      flex-basis:48px !important;
+    }
+
+    header.nav.compact .mark img{
+      width:44px !important;
+      height:42px !important;
+    }
+  }
+
+  @media(max-width:760px){
+    body{
+      padding-top:78px;
+    }
+
+    header.nav .nav-inner{
+      min-height:78px;
+      padding:7px max(16px,env(safe-area-inset-right))
+              7px max(16px,env(safe-area-inset-left));
+    }
+
+    header.nav .mark{
+      width:62px !important;
+      height:58px !important;
+      flex-basis:62px !important;
+    }
+
+    header.nav .mark img{
+      width:58px !important;
+      height:55px !important;
+    }
+
+    header.nav.compact .nav-inner{
+      min-height:56px;
+    }
+
+    header.nav.compact .mark{
+      width:44px !important;
+      height:42px !important;
+      flex-basis:44px !important;
+    }
+
+    header.nav.compact .mark img{
+      width:40px !important;
+      height:39px !important;
+    }
+
+    section,
+    #home,
+    #about,
+    #experience,
+    #education,
+    #skills,
+    #research,
+    #awards,
+    #organizations,
+    #contact{
+      scroll-margin-top:68px;
+    }
+  }
+
+
+  /* ---------- CONTACT DIRECT LINKS — CONSISTENT BLUE ---------- */
+  #contact .contact-direct a{
+    color:#8FB7F4 !important;
+    font-weight:400;
+    transition:
+      color .2s ease,
+      text-shadow .2s ease,
+      transform .2s ease;
+  }
+
+  #contact .contact-direct a:hover{
+    color:#A9C9FF !important;
+    text-shadow:0 0 12px rgba(143,183,244,.28);
+    transform:translateX(3px);
+  }
+
+
+  /* ---------- CONTACT DIRECT LINKS — MATCH "GET IN TOUCH" TEAL ---------- */
+  #contact .contact-direct a{
+    color:var(--teal) !important;
+    font-weight:400;
+    transition:
+      color .2s ease,
+      text-shadow .2s ease,
+      transform .2s ease;
+  }
+
+  #contact .contact-direct a:hover{
+    color:#73E7DF !important;
+    text-shadow:0 0 12px rgba(63,209,201,.28);
+    transform:translateX(3px);
+  }
+
+
+  /* ---------- PROGRAMMING SKILL ICON ---------- */
+  .programming-symbol{
+    font-size:1.05rem !important;
+    font-weight:700;
+    letter-spacing:-.08em;
+    line-height:1;
+  }
+
+
+  /* =========================================================
+     PROFESSIONAL HERO REFINEMENT
+     ========================================================= */
+
+  /* Give the role statement more breathing room and cleaner wrapping. */
+  .terminal-role{
+    max-width:680px !important;
+    padding:15px 18px !important;
+    font-size:clamp(.80rem,1.05vw,.95rem) !important;
+    line-height:1.62 !important;
+  }
+
+  .hero p.lede{
+    max-width:630px !important;
+    font-size:.96rem !important;
+    line-height:1.78 !important;
+    margin-top:15px !important;
+  }
+
+  /* Keep CTA hierarchy clear. */
+  .hero-actions{
+    gap:11px !important;
+    margin-top:26px !important;
+  }
+
+  .hero-actions .btn{
+    padding:12px 20px !important;
+  }
+
+  /* Make the portal cards support navigation without dominating the hero. */
+  .hero-portals{
+    gap:12px !important;
+    margin-top:24px !important;
+  }
+
+  .portal-card{
+    min-height:164px !important;
+    padding:18px 14px 14px !important;
+    border-radius:12px !important;
+    background:linear-gradient(155deg,rgba(10,36,57,.68),rgba(6,19,35,.72)) !important;
+    box-shadow:inset 0 1px rgba(255,255,255,.018),0 12px 34px rgba(0,0,0,.13) !important;
+  }
+
+  .portal-icon{
+    width:40px !important;
+    height:40px !important;
+    margin-bottom:8px !important;
+    font-size:1.55rem !important;
+  }
+
+  .portal-card strong{
+    font-size:.94rem !important;
+    margin-bottom:6px !important;
+  }
+
+  .portal-card small{
+    font-size:.70rem !important;
+    line-height:1.48 !important;
+    min-height:42px !important;
+    color:#8e9bb2 !important;
+  }
+
+  .portal-card b{
+    width:28px !important;
+    height:28px !important;
+    right:11px !important;
+    bottom:11px !important;
+    font-size:.78rem !important;
+  }
+
+  /* Quote becomes a quieter engineering signature instead of a competing CTA. */
+  .hero-quote{
+    margin-top:16px !important;
+    padding:12px 18px !important;
+    min-height:auto !important;
+    border-color:rgba(63,209,201,.12) !important;
+    background:rgba(5,17,32,.45) !important;
+  }
+
+  .hero-quote span{
+    font-size:clamp(.88rem,1.15vw,1rem) !important;
+    color:#cbd5e4 !important;
+  }
+
+  .hero-quote cite{
+    margin-top:2px;
+    font-size:.68rem !important;
+    color:var(--text-faint) !important;
+  }
+
+  /* Slightly strengthen portrait prominence without crowding copy. */
+  .portrait-stage{
+    width:min(100%,600px) !important;
+  }
+
+  .portrait-stage img{
+    width:97% !important;
+    height:97% !important;
+  }
+
+  @media(max-width:1180px){
+    .portal-card{
+      min-height:154px !important;
+    }
+  }
+
+  @media(max-width:900px){
+    .terminal-role{
+      max-width:100% !important;
+    }
+    .hero p.lede{
+      max-width:100% !important;
+    }
+  }
+
+  @media(max-width:560px){
+    .portal-card{
+      min-height:138px !important;
+    }
+    .hero-quote{
+      margin-top:12px !important;
+    }
+  }
+
+
+  /* =========================================================
+     SELECTED PROJECT — MASTER'S NUMERICAL MECHANICS
+     ========================================================= */
+  #projects{
+    position:relative;
+    overflow:hidden;
+  }
+
+  #projects::before{
+    content:'';
+    position:absolute;
+    width:520px;
+    height:520px;
+    right:-240px;
+    top:80px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(63,209,201,.09),transparent 67%);
+    pointer-events:none;
+  }
+
+  .project-feature{
+    position:relative;
+    border:1px solid rgba(63,209,201,.28);
+    border-radius:18px;
+    padding:30px;
+    background:linear-gradient(145deg,rgba(16,34,55,.94),rgba(8,20,36,.88));
+    box-shadow:0 24px 65px rgba(0,0,0,.20);
+    overflow:hidden;
+  }
+
+  .project-kicker{
+    font-family:var(--font-mono);
+    font-size:.74rem;
+    text-transform:uppercase;
+    letter-spacing:.11em;
+    color:var(--coral);
+    margin-bottom:12px;
+  }
+
+  .project-feature h3{
+    max-width:920px;
+    font-family:var(--font-display);
+    font-size:clamp(1.45rem,2.8vw,2.15rem);
+    line-height:1.22;
+    margin-bottom:15px;
+  }
+
+  .project-lede{
+    max-width:88ch;
+    color:var(--text-dim);
+    font-size:.98rem;
+    line-height:1.78;
+  }
+
+  .project-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:20px;
+  }
+
+  .project-tags span{
+    font-family:var(--font-mono);
+    font-size:.73rem;
+    color:#aab8cc;
+    border:1px solid rgba(63,209,201,.19);
+    background:rgba(4,15,28,.34);
+    padding:6px 10px;
+    border-radius:999px;
+  }
+
+  .project-metrics{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    margin-top:24px;
+  }
+
+  .project-metric{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    background:rgba(5,17,32,.55);
+  }
+
+  .project-metric strong{
+    display:block;
+    color:var(--teal);
+    font-family:var(--font-display);
+    font-size:1.28rem;
+  }
+
+  .project-metric span{
+    display:block;
+    margin-top:3px;
+    color:var(--text-faint);
+    font-family:var(--font-mono);
+    font-size:.67rem;
+    line-height:1.45;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+
+  .project-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:24px;
+  }
+
+  .project-note{
+    margin-top:14px;
+    color:var(--text-faint);
+    font-family:var(--font-mono);
+    font-size:.70rem;
+    line-height:1.65;
+  }
+
+  .project-gallery{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:22px;
+  }
+
+  .project-figure{
+    min-width:0;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:10px;
+    background:rgba(5,17,32,.72);
+    transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+  }
+
+  .project-figure:first-child{
+    grid-row:span 2;
+  }
+
+  .project-figure:hover{
+    transform:translateY(-5px);
+    border-color:rgba(63,209,201,.5);
+    box-shadow:0 22px 50px rgba(0,0,0,.24);
+  }
+
+  .project-figure a{
+    display:block;
+  }
+
+  .project-figure img{
+    width:100%;
+    height:270px;
+    object-fit:contain;
+    border-radius:9px;
+    background:#f7f7f7;
+  }
+
+  .project-figure:first-child img{
+    height:568px;
+  }
+
+  .project-caption{
+    padding:11px 5px 3px;
+  }
+
+  .project-caption strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:.94rem;
+    margin-bottom:4px;
+  }
+
+  .project-caption span{
+    display:block;
+    color:var(--text-faint);
+    font-size:.78rem;
+    line-height:1.55;
+  }
+
+  @media(max-width:900px){
+    .project-metrics{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .project-gallery{
+      grid-template-columns:1fr;
+    }
+
+    .project-figure:first-child{
+      grid-row:auto;
+    }
+
+    .project-figure img,
+    .project-figure:first-child img{
+      height:auto;
+      max-height:620px;
+    }
+  }
+
+  @media(max-width:560px){
+    .project-feature{
+      padding:22px 16px;
+    }
+
+    .project-metrics{
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+    }
+
+    .project-actions{
+      display:grid;
+      grid-template-columns:1fr;
+    }
+
+    .project-actions .btn{
+      justify-content:center;
+      text-align:center;
+    }
+  }
+
+
+  /* =========================================================
+     COMPACT PROJECT PREVIEW + FULL PROJECT VIEW
+     ========================================================= */
+  .project-preview{
+    display:grid;
+    grid-template-columns:minmax(0,1.55fr) minmax(250px,.45fr);
+    gap:28px;
+    padding:28px;
+    border:1px solid rgba(63,209,201,.28);
+    border-radius:18px;
+    background:linear-gradient(145deg,rgba(16,34,55,.94),rgba(8,20,36,.88));
+    box-shadow:0 24px 65px rgba(0,0,0,.18);
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+  }
+
+  .project-preview::before{
+    content:'';
+    position:absolute;
+    width:280px;
+    height:280px;
+    right:-90px;
+    bottom:-140px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(63,209,201,.15),transparent 68%);
+    pointer-events:none;
+  }
+
+  .project-preview:hover,
+  .project-preview:focus-visible{
+    transform:translateY(-6px);
+    border-color:rgba(63,209,201,.62);
+    box-shadow:0 28px 72px rgba(0,0,0,.28),0 0 30px rgba(63,209,201,.06);
+  }
+
+  .project-preview-kicker{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:10px;
+  }
+
+  .project-preview h3{
+    font-family:var(--font-display);
+    font-size:clamp(1.35rem,2.6vw,1.95rem);
+    line-height:1.25;
+    margin-bottom:13px;
+    max-width:820px;
+  }
+
+  .project-preview p{
+    color:var(--text-dim);
+    font-size:.95rem;
+    line-height:1.75;
+    max-width:82ch;
+  }
+
+  .project-preview-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:18px;
+  }
+
+  .project-preview-tags span{
+    font-family:var(--font-mono);
+    font-size:.70rem;
+    color:#aebbd0;
+    border:1px solid rgba(63,209,201,.18);
+    border-radius:999px;
+    padding:6px 10px;
+    background:rgba(4,15,28,.35);
+  }
+
+  .project-preview-side{
+    position:relative;
+    z-index:1;
+    display:grid;
+    gap:10px;
+    align-content:start;
+  }
+
+  .project-preview-metric{
+    padding:14px;
+    border:1px solid var(--line);
+    border-radius:11px;
+    background:rgba(5,17,32,.56);
+  }
+
+  .project-preview-metric strong{
+    display:block;
+    font-family:var(--font-display);
+    color:var(--teal);
+    font-size:1.25rem;
+  }
+
+  .project-preview-metric span{
+    display:block;
+    margin-top:2px;
+    color:var(--text-faint);
+    font-family:var(--font-mono);
+    font-size:.64rem;
+    line-height:1.4;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+
+  .project-preview-open{
+    margin-top:4px;
+    padding:11px 14px;
+    border-radius:10px;
+    border:1px solid rgba(255,139,74,.38);
+    color:#ff9a5f;
+    background:rgba(255,139,74,.08);
+    font-family:var(--font-mono);
+    font-size:.76rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .project-detail-modal{
+    position:fixed;
+    inset:0;
+    z-index:8000;
+    display:grid;
+    place-items:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,visibility .25s ease;
+  }
+
+  .project-detail-modal.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  .project-detail-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(2,8,18,.82);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
+
+  .project-detail-dialog{
+    position:relative;
+    z-index:1;
+    width:min(1180px,100%);
+    max-height:92vh;
+    overflow:auto;
+    border:1px solid rgba(63,209,201,.25);
+    border-radius:22px;
+    padding:30px;
+    background:linear-gradient(160deg,rgba(8,20,37,.99),rgba(11,28,47,.98));
+    box-shadow:0 35px 100px rgba(0,0,0,.55);
+    transform:translateY(16px) scale(.98);
+    transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .project-detail-modal.open .project-detail-dialog{
+    transform:none;
+  }
+
+  .project-detail-close{
+    position:sticky;
+    float:right;
+    top:0;
+    z-index:3;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:rgba(16,27,46,.94);
+    color:var(--text);
+    font-size:1.4rem;
+    cursor:pointer;
+    transition:transform .2s ease,border-color .2s ease;
+  }
+
+  .project-detail-close:hover{
+    transform:rotate(90deg);
+    border-color:var(--teal);
+  }
+
+  .project-detail-head{
+    padding-right:56px;
+  }
+
+  .project-detail-kicker{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:10px;
+  }
+
+  .project-detail-head h3{
+    font-family:var(--font-display);
+    font-size:clamp(1.7rem,3.5vw,2.55rem);
+    line-height:1.18;
+    margin-bottom:14px;
+    max-width:900px;
+  }
+
+  .project-detail-intro{
+    max-width:92ch;
+    color:var(--text-dim);
+    font-size:.97rem;
+    line-height:1.8;
+  }
+
+  .project-detail-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+  }
+
+  .project-detail-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:24px;
+  }
+
+  .project-detail-card{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px;
+    background:rgba(5,17,32,.52);
+  }
+
+  .project-detail-card h4{
+    font-family:var(--font-display);
+    font-size:1rem;
+    margin-bottom:9px;
+    color:var(--text);
+  }
+
+  .project-detail-card p,
+  .project-detail-card li{
+    color:var(--text-dim);
+    font-size:.88rem;
+    line-height:1.7;
+  }
+
+  .project-detail-card ul{
+    margin:8px 0 0 18px;
+  }
+
+  .project-detail-card li{
+    margin-bottom:5px;
+  }
+
+  .project-detail-gallery{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:22px;
+  }
+
+  .project-detail-figure{
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:10px;
+    background:rgba(5,17,32,.62);
+  }
+
+  .project-detail-figure:first-child{
+    grid-row:span 2;
+  }
+
+  .project-detail-figure img{
+    width:100%;
+    height:280px;
+    object-fit:contain;
+    border-radius:8px;
+    background:#f7f7f7;
+  }
+
+  .project-detail-figure:first-child img{
+    height:590px;
+  }
+
+  .project-detail-figure figcaption{
+    padding:10px 4px 3px;
+  }
+
+  .project-detail-figure strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:.92rem;
+    margin-bottom:3px;
+  }
+
+  .project-detail-figure span{
+    color:var(--text-faint);
+    font-size:.76rem;
+    line-height:1.5;
+  }
+
+  @media(max-width:850px){
+    .project-preview{
+      grid-template-columns:1fr;
+    }
+
+    .project-preview-side{
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    .project-preview-open{
+      grid-column:1/-1;
+    }
+
+    .project-detail-grid,
+    .project-detail-gallery{
+      grid-template-columns:1fr;
+    }
+
+    .project-detail-figure:first-child{
+      grid-row:auto;
+    }
+
+    .project-detail-figure img,
+    .project-detail-figure:first-child img{
+      height:auto;
+      max-height:620px;
+    }
+  }
+
+  @media(max-width:560px){
+    .project-preview{
+      padding:20px 16px;
+    }
+
+    .project-preview-side{
+      grid-template-columns:1fr;
+    }
+
+    .project-preview-open{
+      grid-column:auto;
+    }
+
+    .project-detail-modal{
+      padding:10px;
+    }
+
+    .project-detail-dialog{
+      padding:22px 15px;
+      max-height:calc(100dvh - 20px);
+      border-radius:18px;
+    }
+
+    .project-detail-actions{
+      display:grid;
+      grid-template-columns:1fr;
+    }
+
+    .project-detail-actions .btn{
+      justify-content:center;
+      text-align:center;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1130,13 +2232,14 @@
 <a href="#experience">Experience</a>
 <a href="#education">Education</a>
 <a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
 <a href="#research">Research</a>
 <a href="#awards">Awards</a>
 <a href="#organizations">Organizations</a>
 </nav>
 <a class="nav-cta" href="#contact">Contact</a>
 <button aria-expanded="false" aria-label="Toggle navigation" class="nav-toggle">☰</button>
-<div aria-hidden="true" class="mobile-menu"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#research">Research</a><a href="#awards">Awards</a><a href="#organizations">Organizations</a><a href="#contact">Contact</a></div>
+<div aria-hidden="true" class="mobile-menu"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#awards">Awards</a><a href="#organizations">Organizations</a><a href="#contact">Contact</a></div>
 </div>
 </header>
 <section class="hero" id="home">
@@ -1149,7 +2252,7 @@
 <div class="hero-kicker">Hello, I’m</div>
 <h1><span>Manikandan</span><strong>Valliappan</strong></h1>
 <div class="terminal-role"><span>CFD Engineer &amp; Solver Developer | Multiphysics Modelling | Particle–Fluid Interaction | High-Performance Computing</span></div>
-<p class="lede">I specialize in CFD and multiphysics simulation, developing and validating numerical models for complex fluid and particle-flow problems. My work combines solver development, C++/Python programming, HPC, verification, and engineering analysis to create accurate and scalable simulation solutions.</p>
+<p class="lede">I develop and validate CFD and multiphysics models for complex fluid and particle-flow problems, combining solver development, C++/Python, HPC, verification, and engineering analysis.</p>
 <div class="hero-actions">
 <a class="btn btn-primary" href="#research">Explore work <span aria-hidden="true">→</span></a>
 <a class="btn btn-ghost" href="#contact">Contact me</a>
@@ -1161,7 +2264,7 @@
 </figure>
 </div>
 <nav aria-label="Portfolio sections" class="hero-portals">
-<a class="portal-card" href="#about"><span class="portal-icon">◎</span><strong>About me</strong><small>Story, goals and professional journey</small><b>→</b></a>
+<a class="portal-card" href="#about"><span class="portal-icon">◎</span><strong>Profile</strong><small>Engineering background and professional focus</small><b>→</b></a>
 <a class="portal-card" href="#experience"><span class="portal-icon">▣</span><strong>Experience</strong><small>Professional roles and engineering work</small><b>→</b></a>
 <a class="portal-card" href="#education"><span class="portal-icon">◇</span><strong>Education</strong><small>Academic background and qualifications</small><b>→</b></a>
 <a class="portal-card" href="#skills"><span class="portal-icon">⚙</span><strong>Skills</strong><small>Technical tools and competencies</small><b>→</b></a>
@@ -1390,7 +2493,7 @@
 <div class="skill-card-foot"><span>Development stack</span><span class="skill-open">Open ↗</span></div>
 </div>
 <div class="skill-card interactive-panel" data-modal-title="Skill area">
-<div class="skill-card-top"><span class="skill-symbol">&gt;_</span><div><h3>Programming</h3><p class="skill-summary">Scientific computing and automation</p></div></div>
+<div class="skill-card-top"><span class="skill-symbol programming-symbol">&lt;/&gt;</span><div><h3>Programming</h3><p class="skill-summary">Scientific computing and automation</p></div></div>
 <div class="tag-row">
 <span class="tag">Python</span><span class="tag">C++</span><span class="tag">MATLAB</span><span class="tag">LaTeX</span>
 </div>
@@ -1411,6 +2514,42 @@
 <div class="skill-card-foot"><span>Design stack</span><span class="skill-open">Open ↗</span></div>
 </div>
 </div>
+</div>
+</section>
+
+
+<section class="reveal" id="projects">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Selected Project</span>
+<h2>Numerical Mechanics &amp; Parameter Identification</h2>
+</div>
+
+<article class="project-preview interactive-project" id="masters-project-preview" tabindex="0" role="button" aria-label="Open full details for Master's numerical mechanics project">
+<div class="project-preview-main">
+<div class="project-preview-kicker">Master's Programming Project · 2020/21</div>
+<h3>Parameter Identification of Elastic-Plastic Material and Its FEM Implementation</h3>
+<p>
+Built a Python-based 2D axisymmetric FEM framework with J2 plasticity, nonlinear hardening, Newton-Raphson equilibrium, and inverse material-parameter identification using Gauss-Newton and Levenberg-Marquardt methods.
+</p>
+
+<div class="project-preview-tags">
+<span>Python</span>
+<span>FEM</span>
+<span>J2 Plasticity</span>
+<span>Gauss-Newton</span>
+<span>Levenberg-Marquardt</span>
+<span>SciPy Verification</span>
+</div>
+</div>
+
+<div class="project-preview-side">
+<div class="project-preview-metric"><strong>10</strong><span>verification &amp; algorithm tests</span></div>
+<div class="project-preview-metric"><strong>5</strong><span>material parameters identified</span></div>
+<div class="project-preview-metric"><strong>2</strong><span>optimization algorithms</span></div>
+<div class="project-preview-open">View full project <span aria-hidden="true">↗</span></div>
+</div>
+</article>
 </div>
 </section>
 <section class="reveal" id="research">
@@ -1585,11 +2724,10 @@
 </div>
 </div>
 </div>
-<button aria-label="Back to top" class="back-top">↑</button>
 <footer>
   <div class="footer-inner">
     <div class="footer-views">
-      Portfolio views · <span id="portfolio-view-count">1,284</span>
+      Portfolio views · <span id="portfolio-view-count" aria-live="polite">—</span>
     </div>
 
     <div class="footer-center">
@@ -1700,7 +2838,8 @@
     const max=h.scrollHeight-h.clientHeight;
     progress.style.width=(max ? (h.scrollTop/max)*100 : 0)+'%';
     header.classList.toggle('scrolled',h.scrollTop>12);
-    backTop.classList.toggle('show',h.scrollTop>600);
+    header.classList.toggle('compact',h.scrollTop>70);
+    if(backTop) backTop.classList.toggle('show',h.scrollTop>600);
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
@@ -1721,7 +2860,7 @@
   const aboutSection=document.querySelector('#about');
   if(aboutSection) cardObserver.observe(aboutSection);
 
-  backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  if(backTop) backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
   if(toggle&&menu){
     toggle.addEventListener('click',()=>{
       const open=menu.classList.toggle('open');
@@ -1871,6 +3010,225 @@
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+})();
+</script>
+
+
+<script>
+(function () {
+  const counterEl = document.getElementById('portfolio-view-count');
+  if (!counterEl) return;
+
+  /*
+    Live portfolio page-view counter.
+    CounterAPI is public and requires no account/API key.
+    Namespace and key are fixed so the count remains stable even if URL
+    query parameters or anchors change.
+  */
+  const namespace = 'mani1801.github.io';
+  const action = 'view';
+  const key = 'Manikandan-Valliappan-Portfolio';
+  const endpoint =
+    'https://counterapi.com/api/' +
+    encodeURIComponent(namespace) + '/' +
+    encodeURIComponent(action) + '/' +
+    encodeURIComponent(key);
+
+  fetch(endpoint, { method: 'GET', mode: 'cors', cache: 'no-store' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('Counter request failed');
+      return response.json();
+    })
+    .then(function (data) {
+      if (typeof data.value !== 'number') throw new Error('Invalid counter response');
+
+      counterEl.textContent = new Intl.NumberFormat().format(data.value);
+      counterEl.title = 'Live portfolio page views';
+    })
+    .catch(function () {
+      counterEl.textContent = '—';
+      counterEl.title = 'View count temporarily unavailable';
+    });
+})();
+</script>
+
+
+
+
+
+<script>
+(function () {
+  const nav = document.querySelector('header.nav');
+  if (!nav) return;
+
+  let ticking = false;
+
+  function syncNavSize() {
+    nav.classList.toggle('compact', window.scrollY > 90);
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(syncNavSize);
+      ticking = true;
+    }
+  }, { passive:true });
+
+  window.addEventListener('load', syncNavSize);
+  syncNavSize();
+})();
+</script>
+
+
+<div class="project-detail-modal" id="masters-project-modal" aria-hidden="true">
+<div class="project-detail-backdrop" data-project-close></div>
+
+<div class="project-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="masters-project-title">
+<button class="project-detail-close" type="button" aria-label="Close project details" data-project-close>×</button>
+
+<div class="project-detail-head">
+<div class="project-detail-kicker">Personal Programming Project · Winter Semester 2020/21</div>
+<h3 id="masters-project-title">Parameter Identification of Elastic-Plastic Material and Its FEM Implementation</h3>
+<p class="project-detail-intro">
+The project developed a Python-based 2D axisymmetric finite-element implementation for elastic-plastic material response and inverse material-parameter identification. The final verified model combined J2/von Mises plasticity with nonlinear hardening, Gauss quadrature, Newton-Raphson equilibrium iterations, and nonlinear least-squares optimization using Gauss-Newton and Levenberg-Marquardt algorithms.
+</p>
+
+<div class="project-detail-actions">
+<a class="btn btn-primary" href="Manikandan_Valliappan_Masters_Project_Report.pdf" download>Download full report ↓</a>
+<a class="btn btn-ghost" href="Manikandan_Valliappan_Masters_Project_Report.pdf" target="_blank" rel="noopener">Open report ↗</a>
+<a class="btn btn-ghost" href="#contact" data-project-contact>Discuss this project</a>
+</div>
+</div>
+
+<div class="project-detail-grid">
+<div class="project-detail-card">
+<h4>Numerical formulation</h4>
+<ul>
+<li>2D axisymmetric finite-element formulation for a constrained cylindrical specimen.</li>
+<li>J2/von Mises elastic-plastic constitutive response with nonlinear hardening.</li>
+<li>Gauss quadrature for element-level numerical integration.</li>
+<li>Newton-Raphson iterations for displacement-driven nonlinear equilibrium.</li>
+</ul>
+</div>
+
+<div class="project-detail-card">
+<h4>Inverse parameter identification</h4>
+<ul>
+<li>Implemented nonlinear least-squares material calibration.</li>
+<li>Gauss-Newton optimization.</li>
+<li>Levenberg-Marquardt trust-region-style optimization.</li>
+<li>Five calibrated parameters: Young's modulus, yield stress, linear hardening modulus, nonlinear hardening modulus, and hardening exponent.</li>
+</ul>
+</div>
+
+<div class="project-detail-card">
+<h4>Verification strategy</h4>
+<ul>
+<li>Manual one-element elasticity calculation.</li>
+<li>Unit tests for FEM subroutines and numerical building blocks.</li>
+<li>Rigid-body translation and homogeneous deformation tests.</li>
+<li>Voce hardening verification.</li>
+<li>Polynomial-function tests for both optimization algorithms.</li>
+<li>SciPy curve-fit cross-check.</li>
+</ul>
+</div>
+
+<div class="project-detail-card">
+<h4>Engineering outcome</h4>
+<p>
+The final elastic-plastic implementation recovered material parameters close to the reference values and reproduced the reference stress-strain response. The report also documents the earlier elastic-viscoplastic implementation attempt and the convergence/sign issues that motivated the final model choice.
+</p>
+</div>
+</div>
+
+<div class="project-detail-gallery">
+<figure class="project-detail-figure">
+<a href="masters-project/parameter_identification_flowchart.png" target="_blank" rel="noopener">
+<img src="masters-project/parameter_identification_flowchart.png" alt="Parameter identification workflow" loading="lazy">
+</a>
+<figcaption><strong>Parameter-identification workflow</strong><span>FEM response, residual evaluation and iterative parameter updates.</span></figcaption>
+</figure>
+
+<figure class="project-detail-figure">
+<a href="masters-project/manual_fem_verification.png" target="_blank" rel="noopener">
+<img src="masters-project/manual_fem_verification.png" alt="Manual FEM verification plot" loading="lazy">
+</a>
+<figcaption><strong>Manual FEM verification</strong><span>Python FEM result checked against manual calculation.</span></figcaption>
+</figure>
+
+<figure class="project-detail-figure">
+<a href="masters-project/voce_hardening_verification.png" target="_blank" rel="noopener">
+<img src="masters-project/voce_hardening_verification.png" alt="Voce hardening verification plot" loading="lazy">
+</a>
+<figcaption><strong>Voce-hardening verification</strong><span>Implemented plastic response compared with nonlinear hardening law.</span></figcaption>
+</figure>
+
+<figure class="project-detail-figure">
+<a href="masters-project/parameter_curve_fit.png" target="_blank" rel="noopener">
+<img src="masters-project/parameter_curve_fit.png" alt="Optimized material parameter curve fit" loading="lazy">
+</a>
+<figcaption><strong>Inverse parameter curve fit</strong><span>Noisy reference data, exact response and optimized material response.</span></figcaption>
+</figure>
+
+<figure class="project-detail-figure">
+<a href="masters-project/scipy_curve_fit.png" target="_blank" rel="noopener">
+<img src="masters-project/scipy_curve_fit.png" alt="SciPy curve fit verification" loading="lazy">
+</a>
+<figcaption><strong>SciPy cross-check</strong><span>Independent curve fitting used to verify the implemented optimization workflow.</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+<script>
+(function () {
+  const preview = document.getElementById('masters-project-preview');
+  const modal = document.getElementById('masters-project-modal');
+  if (!preview || !modal) return;
+
+  const closeControls = modal.querySelectorAll('[data-project-close]');
+  const contactLink = modal.querySelector('[data-project-contact]');
+
+  function openProject() {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    const closeButton = modal.querySelector('.project-detail-close');
+    if (closeButton) setTimeout(() => closeButton.focus(), 100);
+  }
+
+  function closeProject() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  preview.addEventListener('click', openProject);
+  preview.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProject();
+    }
+  });
+
+  closeControls.forEach(function (control) {
+    control.addEventListener('click', closeProject);
+  });
+
+  if (contactLink) {
+    contactLink.addEventListener('click', function () {
+      closeProject();
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && modal.classList.contains('open')) {
+      closeProject();
+      preview.focus();
+    }
+  });
 })();
 </script>
 
