@@ -857,6 +857,122 @@
     #research .paper-actions .btn{width:100%;justify-content:center;text-align:center}
     #research .paper-status{line-height:1.55;align-items:flex-start}
   }
+
+  /* ---------- CONTACT FORM ---------- */
+  .contact-layout{
+    width:100%;
+    display:grid;
+    grid-template-columns:minmax(0,.72fr) minmax(420px,1.28fr);
+    gap:34px;
+    align-items:start;
+  }
+  .contact-copy{
+    position:sticky;
+    top:120px;
+  }
+  .contact-copy p{
+    color:var(--text-dim);
+    margin-top:14px;
+    max-width:48ch;
+    line-height:1.75;
+  }
+  .contact-links{
+    margin-top:24px;
+  }
+  .contact-form{
+    width:100%;
+    padding:28px;
+    border:1px solid rgba(63,209,201,.24);
+    border-radius:18px;
+    background:linear-gradient(145deg,rgba(16,34,55,.92),rgba(9,22,39,.9));
+    box-shadow:0 24px 65px rgba(0,0,0,.22);
+  }
+  .form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+  }
+  .form-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .form-field.full{grid-column:1/-1;}
+  .form-field label{
+    font-family:var(--font-mono);
+    font-size:.72rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:rgba(5,17,32,.76);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:.96rem;
+    padding:13px 14px;
+    outline:none;
+    transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+  }
+  .form-field textarea{
+    min-height:170px;
+    resize:vertical;
+    line-height:1.6;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder{color:var(--text-faint);}
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus{
+    border-color:var(--teal);
+    background:rgba(7,24,42,.95);
+    box-shadow:0 0 0 3px rgba(63,209,201,.09);
+  }
+  .form-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+  .contact-submit{
+    border:0;
+    cursor:pointer;
+  }
+  .form-note{
+    color:var(--text-faint);
+    font-family:var(--font-mono);
+    font-size:.7rem;
+    line-height:1.5;
+  }
+  .contact-direct{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:24px;
+  }
+  .contact-direct a{
+    color:var(--text-dim);
+    transition:color .2s ease;
+    overflow-wrap:anywhere;
+  }
+  .contact-direct a:hover{color:var(--teal);}
+  @media(max-width:900px){
+    .contact-layout{grid-template-columns:1fr;}
+    .contact-copy{position:static;}
+  }
+  @media(max-width:560px){
+    .contact-form{padding:20px 16px;}
+    .form-grid{grid-template-columns:1fr;}
+    .form-field.full{grid-column:auto;}
+    .form-actions .btn{width:100%;justify-content:center;}
+  }
+
 </style>
 </head>
 <body>
@@ -1251,13 +1367,62 @@
 </div>
 </section>
 <section class="reveal" id="contact">
-<div class="wrap contact-inner">
+<div class="wrap">
+<div class="contact-layout">
+<div class="contact-copy">
 <span class="eyebrow">Get in touch</span>
-<h2>Open to CFD, solver development, and simulation engineering roles.</h2>
-<div class="contact-links">
-<a class="btn btn-primary" href="mailto:rammanish846@gmail.com">rammanish846@gmail.com</a>
-<a class="btn btn-ghost" href="https://linkedin.com/in/mani1896" rel="noopener" target="_blank">LinkedIn ↗</a>
-<a class="btn btn-ghost" href="tel:+4917665547602">+49 17665547602</a>
+<h2>Let’s discuss CFD, solver development, or simulation engineering.</h2>
+<p>If you have an engineering role, research collaboration, consulting question, or technical project in mind, send me a message below.</p>
+<div class="contact-direct">
+<a href="mailto:rammanish846@gmail.com">rammanish846@gmail.com</a>
+<a href="tel:+4917665547602">+49 17665547602</a>
+<a href="https://linkedin.com/in/mani1896" rel="noopener" target="_blank">LinkedIn ↗</a>
+</div>
+</div>
+
+<form class="contact-form" action="https://formsubmit.co/rammanish846@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="New portfolio contact — Manikandan Valliappan">
+<input type="hidden" name="_template" value="table">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+<div class="form-grid">
+<div class="form-field">
+<label for="contact-name">Name</label>
+<input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+</div>
+
+<div class="form-field">
+<label for="contact-email">Email</label>
+<input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+</div>
+
+<div class="form-field">
+<label for="contact-company">Company / Organization</label>
+<input id="contact-company" name="company" type="text" autocomplete="organization" placeholder="Optional">
+</div>
+
+<div class="form-field">
+<label for="contact-topic">Topic</label>
+<select id="contact-topic" name="topic">
+<option value="Engineering role">Engineering role</option>
+<option value="Research collaboration">Research collaboration</option>
+<option value="CFD / solver project">CFD / solver project</option>
+<option value="Technical discussion">Technical discussion</option>
+<option value="Other">Other</option>
+</select>
+</div>
+
+<div class="form-field full">
+<label for="contact-message">Message</label>
+<textarea id="contact-message" name="message" placeholder="Tell me briefly what you would like to discuss…" required></textarea>
+</div>
+</div>
+
+<div class="form-actions">
+<button class="btn btn-primary contact-submit" type="submit">Send message <span aria-hidden="true">→</span></button>
+<span class="form-note">Your message is sent securely through the form service to my email.</span>
+</div>
+</form>
 </div>
 </div>
 </section>
