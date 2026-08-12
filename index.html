@@ -2448,6 +2448,27 @@
     }
   }
 
+
+  /* ---------- MASTER'S THESIS PROJECT ---------- */
+  .thesis-preview{margin-top:18px}
+  .thesis-dialog{width:min(1240px,100%)}
+  .thesis-method-grid{margin-top:24px}
+  .thesis-overview,.thesis-results{margin-top:30px;padding-top:24px;border-top:1px solid rgba(63,209,201,.14)}
+  .thesis-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+  .thesis-gallery-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .thesis-gallery-single{grid-template-columns:minmax(0,680px)}
+  .thesis-figure{min-width:0;border:1px solid var(--line);border-radius:14px;padding:10px;background:rgba(5,17,32,.62);transition:transform .25s ease,border-color .25s ease}
+  .thesis-figure:hover{transform:translateY(-4px);border-color:rgba(63,209,201,.42)}
+  .thesis-figure img{width:100%;height:300px;object-fit:contain;border-radius:8px;background:#fff}
+  .thesis-figure figcaption{padding:10px 4px 3px}
+  .thesis-figure strong{display:block;font-family:var(--font-display);font-size:.92rem;margin-bottom:4px}
+  .thesis-figure span{display:block;color:var(--text-faint);font-size:.76rem;line-height:1.5}
+  .thesis-highlights{margin-top:24px}
+  @media(max-width:900px){
+    .thesis-gallery,.thesis-gallery-3{grid-template-columns:1fr}
+    .thesis-figure img{height:auto;max-height:560px}
+  }
+
 </style>
 </head>
 <body>
@@ -2749,8 +2770,8 @@
 <section class="reveal" id="projects">
 <div class="wrap">
 <div class="section-head">
-<span class="eyebrow">Selected Project</span>
-<h2>Numerical Mechanics &amp; Parameter Identification</h2>
+<span class="eyebrow">Selected Projects</span>
+<h2>Selected Engineering Projects</h2>
 </div>
 
 <article class="project-preview interactive-project" id="masters-project-preview" tabindex="0" role="button" aria-label="Open full details for Master's numerical mechanics project">
@@ -2778,6 +2799,34 @@ Built a Python-based 2D axisymmetric FEM framework with J2 plasticity, nonlinear
 <div class="project-preview-open">View full project <span aria-hidden="true">↗</span></div>
 </div>
 </article>
+
+<article class="project-preview interactive-project thesis-preview" id="master-thesis-preview" tabindex="0" role="button" aria-label="Open full details for Master's thesis project">
+<div class="project-preview-main">
+<div class="project-preview-kicker">Master's Thesis · Fraunhofer IPMS · 2022</div>
+<h3>Parametric Study of the Nano E-Drive Mechanism in Clamped-Clamped Beams</h3>
+<p>
+Developed nonlinear electromechanical FEM models in ANSYS APDL/MAPDL for prismatic and S-shaped Nano Electrostatic Drive beams, then combined parametric sweeps, Buckingham's Pi dimensional analysis, and regression modelling to derive geometry-performance relationships.
+</p>
+
+<div class="project-preview-tags">
+<span>ANSYS APDL</span>
+<span>MAPDL</span>
+<span>MEMS / NED</span>
+<span>Nonlinear FEM</span>
+<span>Buckingham Pi</span>
+<span>Regression Analysis</span>
+<span>Python / Pandas</span>
+</div>
+</div>
+
+<div class="project-preview-side">
+<div class="project-preview-metric"><strong>2</strong><span>beam geometries studied</span></div>
+<div class="project-preview-metric"><strong>3</strong><span>FEM analysis types</span></div>
+<div class="project-preview-metric"><strong>200</strong><span>substeps selected</span></div>
+<div class="project-preview-open">View full thesis project <span aria-hidden="true">↗</span></div>
+</div>
+</article>
+
 </div>
 </section>
 <section class="reveal" id="research">
@@ -3713,6 +3762,232 @@ The final elastic-plastic implementation recovered material parameters close to 
       closeProject();
       preview.focus();
     }
+  });
+})();
+</script>
+
+
+<div class="project-detail-modal" id="master-thesis-modal" aria-hidden="true">
+<div class="project-detail-backdrop" data-thesis-close></div>
+<div class="project-detail-dialog thesis-dialog" role="dialog" aria-modal="true" aria-labelledby="master-thesis-title">
+<button class="project-detail-close" type="button" aria-label="Close thesis details" data-thesis-close>×</button>
+
+<div class="project-detail-head">
+<div class="project-detail-kicker">Master's Thesis · Computational Materials Science · Fraunhofer IPMS / TU Freiberg</div>
+<h3 id="master-thesis-title">Parametric Study of the Nano E-Drive Mechanism in Clamped-Clamped Beams</h3>
+<p class="project-detail-intro">
+Developed nonlinear electromechanical FEM models of prismatic and S-shaped Nano Electrostatic Drive actuators in ANSYS APDL/MAPDL. Parametric simulation results were transformed with Buckingham's Pi dimensional analysis and fitted with regression models to obtain empirical geometry-performance relationships.
+</p>
+<div class="project-detail-actions">
+<a class="btn btn-primary" href="Manikandan_Valliappan_Master_Thesis_NED.pdf" download>Download full thesis ↓</a>
+<a class="btn btn-ghost" href="Manikandan_Valliappan_Master_Thesis_NED.pdf" target="_blank" rel="noopener">Open thesis ↗</a>
+<a class="btn btn-ghost" href="#contact" data-thesis-contact>Discuss this project</a>
+</div>
+</div>
+
+<div class="project-detail-grid thesis-method-grid">
+<div class="project-detail-card">
+<h4>FEM implementation</h4>
+<ul>
+<li>ANSYS APDL/MAPDL nonlinear electromechanical modelling.</li>
+<li>Plane183 structural and Plane223 electromechanical elements.</li>
+<li>Static, modal and linear-perturbation analyses.</li>
+<li>Newton-Raphson nonlinear solution with stress stiffening.</li>
+</ul>
+</div>
+<div class="project-detail-card">
+<h4>Parametric study</h4>
+<ul>
+<li>Prismatic beam: length, thickness, electrostatic gap, recess and pressure.</li>
+<li>S-shaped beam: arc length, thickness, electrostatic gap and span angle.</li>
+<li>Simulation output exported to CSV and post-processed using Python/Pandas.</li>
+<li>200 substeps selected after sensitivity analysis.</li>
+</ul>
+</div>
+<div class="project-detail-card">
+<h4>Performance variables</h4>
+<ul>
+<li>Pull-in voltage and deflection.</li>
+<li>Charge / capacitance.</li>
+<li>Mechanical and electromechanical resonance frequencies.</li>
+<li>Displaced area / acoustic response.</li>
+</ul>
+</div>
+<div class="project-detail-card">
+<h4>Regression framework</h4>
+<ul>
+<li>Buckingham's Pi theorem for dimensionless groups.</li>
+<li>Analytical prismatic-beam model used for verification.</li>
+<li>Linear, polynomial and nonlinear regression models.</li>
+<li>Methodology extended to the S-shaped NED actuator.</li>
+</ul>
+</div>
+</div>
+
+<section class="thesis-overview">
+<div class="project-subhead"><span>System &amp; geometry</span><h4>NED modelling concept</h4><p>Core actuator concept and the two beam geometries studied.</p></div>
+<div class="thesis-gallery thesis-gallery-3">
+
+<figure class="thesis-figure">
+<a href="master-thesis/ned_process.png" target="_blank" rel="noopener">
+<img src="master-thesis/ned_process.png" alt="NED process diagram" loading="lazy">
+</a>
+<figcaption><strong>NED process diagram</strong><span>Inputs mapped to deflection, charge, displaced area, pull-in voltage and resonance frequency.</span></figcaption>
+</figure>
+
+
+<figure class="thesis-figure">
+<a href="master-thesis/prismatic_geometry.png" target="_blank" rel="noopener">
+<img src="master-thesis/prismatic_geometry.png" alt="Prismatic beam geometry" loading="lazy">
+</a>
+<figcaption><strong>Prismatic beam</strong><span>Clamped-clamped Coulomb-actuated microbeam with electrostatic gap and recess.</span></figcaption>
+</figure>
+
+
+<figure class="thesis-figure">
+<a href="master-thesis/s_geometry.png" target="_blank" rel="noopener">
+<img src="master-thesis/s_geometry.png" alt="S-shaped NED beam geometry" loading="lazy">
+</a>
+<figcaption><strong>S-shaped NED beam</strong><span>S-shaped actuator geometry used for the complex-geometry extension.</span></figcaption>
+</figure>
+
+</div>
+</section>
+
+<section class="thesis-results">
+<div class="project-subhead"><span>Numerical checks</span><h4>Mesh and loading sensitivity</h4><p>Robustness checks performed before the complete parametric campaign.</p></div>
+<div class="thesis-gallery">
+
+<figure class="thesis-figure">
+<a href="master-thesis/mesh_convergence.png" target="_blank" rel="noopener">
+<img src="master-thesis/mesh_convergence.png" alt="Mesh convergence study" loading="lazy">
+</a>
+<figcaption><strong>Mesh convergence</strong><span>Results become stable after approximately 100 geometry divisions according to the thesis.</span></figcaption>
+</figure>
+
+
+<figure class="thesis-figure">
+<a href="master-thesis/pressure_sensitivity.png" target="_blank" rel="noopener">
+<img src="master-thesis/pressure_sensitivity.png" alt="Pressure sensitivity plot" loading="lazy">
+</a>
+<figcaption><strong>Pressure sensitivity</strong><span>Positive and negative pressure shift the pull-in response.</span></figcaption>
+</figure>
+
+</div>
+</section>
+
+<section class="thesis-results">
+<div class="project-subhead"><span>Prismatic beam</span><h4>FEM and regression validation</h4><p>The prismatic beam provided an analytically verifiable basis for the regression framework.</p></div>
+<div class="thesis-gallery">
+
+<figure class="thesis-figure">
+<a href="master-thesis/prismatic_fem.png" target="_blank" rel="noopener">
+<img src="master-thesis/prismatic_fem.png" alt="ANSYS prismatic beam FEM result" loading="lazy">
+</a>
+<figcaption><strong>ANSYS FEM result</strong><span>Computed prismatic-beam displacement field.</span></figcaption>
+</figure>
+
+
+<figure class="thesis-figure">
+<a href="master-thesis/prismatic_deflection.png" target="_blank" rel="noopener">
+<img src="master-thesis/prismatic_deflection.png" alt="Prismatic beam voltage deflection plot" loading="lazy">
+</a>
+<figcaption><strong>Voltage-deflection validation</strong><span>Analytical, FEM and regression responses compared.</span></figcaption>
+</figure>
+
+</div>
+</section>
+
+<section class="thesis-results">
+<div class="project-subhead"><span>Global analysis</span><h4>Dimensionless scaling laws</h4><p>Regression models derived from the full parametric FEM database.</p></div>
+<div class="thesis-gallery">
+
+<figure class="thesis-figure">
+<a href="master-thesis/res_freq_global.png" target="_blank" rel="noopener">
+<img src="master-thesis/res_freq_global.png" alt="Global resonance regression" loading="lazy">
+</a>
+<figcaption><strong>Resonance-frequency scaling</strong><span>Global mechanical resonance-frequency regression; reported RMSE 0.17%.</span></figcaption>
+</figure>
+
+
+<figure class="thesis-figure">
+<a href="master-thesis/spring_global.png" target="_blank" rel="noopener">
+<img src="master-thesis/spring_global.png" alt="Global spring stiffness regression" loading="lazy">
+</a>
+<figcaption><strong>Spring-stiffness scaling</strong><span>Global spring-stiffness regression; reported RMSE 0.09%.</span></figcaption>
+</figure>
+
+
+<figure class="thesis-figure">
+<a href="master-thesis/pullin_global.png" target="_blank" rel="noopener">
+<img src="master-thesis/pullin_global.png" alt="Global pull in voltage regression" loading="lazy">
+</a>
+<figcaption><strong>Pull-in-voltage scaling</strong><span>Global pull-in-voltage regression across recess ratios; the thesis reports higher error at large recess.</span></figcaption>
+</figure>
+
+</div>
+</section>
+
+<section class="thesis-results">
+<div class="project-subhead"><span>S-shaped extension</span><h4>Complex NED actuator</h4><p>The workflow was extended from the prismatic validation case to the S-shaped NED beam.</p></div>
+<div class="thesis-gallery thesis-gallery-single">
+
+<figure class="thesis-figure">
+<a href="master-thesis/s_fem.png" target="_blank" rel="noopener">
+<img src="master-thesis/s_fem.png" alt="S-shaped NED FEM result" loading="lazy">
+</a>
+<figcaption><strong>S-shaped FEM result</strong><span>ANSYS result demonstrating the extension to the S-shaped actuator geometry.</span></figcaption>
+</figure>
+
+</div>
+</section>
+
+<div class="thesis-highlights">
+<div class="project-detail-card">
+<h4>Selected findings</h4>
+<ul>
+<li>No-recess prismatic spring-stiffness / effective-piston-length regression errors were reported below 1%.</li>
+<li>No-recess displaced-area RMSE was reported as 0.21%.</li>
+<li>Global mechanical resonance-frequency regression RMSE was reported as 0.17%.</li>
+<li>Global spring-stiffness regression RMSE was reported as 0.09%.</li>
+<li>Global pull-in-voltage regression showed a larger overall error of 9.7%, especially at higher recess values.</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<script>
+(function () {
+  const preview = document.getElementById('master-thesis-preview');
+  const modal = document.getElementById('master-thesis-modal');
+  if (!preview || !modal) return;
+  const closers = modal.querySelectorAll('[data-thesis-close]');
+  const contact = modal.querySelector('[data-thesis-contact]');
+
+  function openThesis(){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    const b=modal.querySelector('.project-detail-close');
+    if(b) setTimeout(()=>b.focus(),100);
+  }
+  function closeThesis(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  preview.addEventListener('click',openThesis);
+  preview.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();openThesis();}
+  });
+  closers.forEach(c=>c.addEventListener('click',closeThesis));
+  if(contact) contact.addEventListener('click',closeThesis);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&modal.classList.contains('open')){closeThesis();preview.focus();}
   });
 })();
 </script>
