@@ -1048,6 +1048,76 @@
     }
   }
 
+
+  /* ---------- FOOTER STATUS BAR ---------- */
+  footer{
+    padding:22px 0 24px;
+    font-family:var(--font-mono);
+    font-size:.74rem;
+    color:var(--text-faint);
+  }
+  .footer-inner{
+    max-width:1380px;
+    margin:0 auto;
+    padding:0 36px;
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:24px;
+  }
+  .footer-views{
+    justify-self:start;
+    white-space:nowrap;
+    color:var(--text-faint);
+  }
+  .footer-center{
+    justify-self:center;
+    text-align:center;
+    color:var(--text-faint);
+    line-height:1.6;
+  }
+  .footer-top-link{
+    justify-self:end;
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:rgba(16,27,46,.55);
+    color:var(--teal);
+    transition:transform .2s ease,border-color .2s ease,background .2s ease;
+  }
+  .footer-top-link:hover{
+    transform:translateY(-3px);
+    border-color:var(--teal);
+    background:rgba(63,209,201,.08);
+  }
+  @media(max-width:760px){
+    footer{padding:20px 0 24px;}
+    .footer-inner{
+      padding:0 max(18px,env(safe-area-inset-right)) 0 max(18px,env(safe-area-inset-left));
+      grid-template-columns:1fr auto;
+      gap:12px 16px;
+    }
+    .footer-views{
+      grid-column:1;
+      grid-row:1;
+      white-space:normal;
+    }
+    .footer-top-link{
+      grid-column:2;
+      grid-row:1 / span 2;
+      align-self:center;
+    }
+    .footer-center{
+      grid-column:1;
+      grid-row:2;
+      justify-self:start;
+      text-align:left;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1516,7 +1586,19 @@
 </div>
 </div>
 <button aria-label="Back to top" class="back-top">↑</button>
-<footer>Manikandan Valliappan · CFD Simulation Engineer · Clausthal-Zellerfeld, Germany</footer>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-views">
+      Portfolio views · <span id="portfolio-view-count">1,284</span>
+    </div>
+
+    <div class="footer-center">
+      © <span id="current-year"></span> · Manikandan Valliappan · CFD Simulation Engineer · Clausthal-Zellerfeld, Germany
+    </div>
+
+    <a class="footer-top-link" href="#home" aria-label="Back to top">↑</a>
+  </div>
+</footer>
 <script>
 // Signature element: streamline / particle-tracking field, evoking CFD
 // velocity-field visualization (the actual subject of his work).
@@ -1779,6 +1861,16 @@
       closeSuccessPopup();
     }
   });
+})();
+</script>
+
+
+<script>
+(function () {
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 })();
 </script>
 
