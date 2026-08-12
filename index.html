@@ -973,6 +973,81 @@
     .form-actions .btn{width:100%;justify-content:center;}
   }
 
+
+  /* ---------- CONTACT SUCCESS POPUP ---------- */
+  .contact-success-popup{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:grid;
+    place-items:center;
+    padding:20px;
+    background:rgba(2,8,18,.72);
+    backdrop-filter:blur(10px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,visibility .25s ease;
+  }
+  .contact-success-popup.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .contact-success-card{
+    position:relative;
+    width:min(460px,100%);
+    padding:32px 28px 26px;
+    border:1px solid rgba(63,209,201,.38);
+    border-radius:20px;
+    background:linear-gradient(150deg,rgba(16,34,55,.98),rgba(8,20,37,.98));
+    box-shadow:0 30px 90px rgba(0,0,0,.5),0 0 45px rgba(63,209,201,.08);
+    text-align:center;
+    transform:translateY(16px) scale(.97);
+    transition:transform .25s ease;
+  }
+  .contact-success-popup.show .contact-success-card{
+    transform:none;
+  }
+  .contact-success-icon{
+    width:64px;
+    height:64px;
+    margin:0 auto 18px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    border:1px solid rgba(63,209,201,.45);
+    background:rgba(63,209,201,.10);
+    color:var(--teal);
+    font-family:var(--font-display);
+    font-size:2rem;
+    font-weight:700;
+    box-shadow:0 0 28px rgba(63,209,201,.12);
+  }
+  .contact-success-card h3{
+    font-family:var(--font-display);
+    font-size:1.45rem;
+    margin-bottom:10px;
+    color:var(--text);
+  }
+  .contact-success-card p{
+    color:var(--text-dim);
+    line-height:1.7;
+    margin-bottom:22px;
+  }
+  .contact-success-close{
+    border:0;
+    cursor:pointer;
+    min-width:140px;
+    justify-content:center;
+  }
+  @media(max-width:560px){
+    .contact-success-card{
+      padding:28px 20px 22px;
+      border-radius:16px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1383,7 +1458,7 @@
 <form class="contact-form" action="https://formsubmit.co/rammanish846@gmail.com" method="POST">
 <input type="hidden" name="_subject" value="New portfolio contact — Manikandan Valliappan">
 <input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="https://mani1801.github.io/Manikandan-Valliappan-Portfolio/">
+<input type="hidden" name="_next" value="https://mani1801.github.io/Manikandan-Valliappan-Portfolio/?sent=1#contact">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
 <div class="form-grid">
@@ -1648,5 +1723,62 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape') closePanel();});
 })();
 </script>
+
+<div class="contact-success-popup" id="contact-success-popup" role="dialog" aria-modal="true" aria-labelledby="contact-success-title" aria-hidden="true">
+  <div class="contact-success-card">
+    <div class="contact-success-icon" aria-hidden="true">✓</div>
+    <h3 id="contact-success-title">Message successfully sent</h3>
+    <p>Thank you for reaching out. Your message has been delivered, and I’ll get back to you as soon as possible.</p>
+    <button class="btn btn-primary contact-success-close" id="contact-success-close" type="button">Done</button>
+  </div>
+</div>
+
+
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const popup = document.getElementById('contact-success-popup');
+  const closeBtn = document.getElementById('contact-success-close');
+
+  if (!popup || !closeBtn) return;
+
+  function closeSuccessPopup() {
+    popup.classList.remove('show');
+    popup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    // Remove ?sent=1 from the URL so the popup will not show again on refresh.
+    if (params.get('sent') === '1') {
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+  }
+
+  if (params.get('sent') === '1') {
+    popup.classList.add('show');
+    popup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    window.setTimeout(function () {
+      closeBtn.focus();
+    }, 150);
+  }
+
+  closeBtn.addEventListener('click', closeSuccessPopup);
+
+  popup.addEventListener('click', function (event) {
+    if (event.target === popup) {
+      closeSuccessPopup();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && popup.classList.contains('show')) {
+      closeSuccessPopup();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
