@@ -2646,6 +2646,16 @@
     }
   }
 
+
+  /* ---------- CLEAN SKILL DETAIL POPUP ---------- */
+  .profile-modal-body .skill-card .skill-card-foot{
+    justify-content:flex-start !important;
+  }
+
+  .profile-modal-body .skill-card .skill-open{
+    display:none !important;
+  }
+
 </style>
 </head>
 <body>
@@ -3365,7 +3375,17 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
     } else if(panel){
       const clone=panel.cloneNode(true);
       clone.classList.remove('interactive-panel');
-      clone.querySelectorAll('[role="button"],[tabindex]').forEach(el=>{el.removeAttribute('role');el.removeAttribute('tabindex');});
+
+      // Skill cards already use OPEN on the main page to launch this modal.
+      // Do not repeat the same OPEN control inside the cloned detail view.
+      if(panel.classList.contains('skill-card')){
+        clone.querySelectorAll('.skill-open').forEach(el=>el.remove());
+      }
+
+      clone.querySelectorAll('[role="button"],[tabindex]').forEach(el=>{
+        el.removeAttribute('role');
+        el.removeAttribute('tabindex');
+      });
       body.innerHTML='';
       body.appendChild(clone);
     } else {
