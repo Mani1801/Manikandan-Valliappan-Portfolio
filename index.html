@@ -93,7 +93,7 @@
   }
   #flowfield{
     position:absolute; inset:0; width:100%; height:100%;
-    opacity:0.55;
+    opacity:0.78;
   }
   .hero-inner{
     position:relative; z-index:2;
@@ -667,7 +667,7 @@
   .nav-cta{border-radius:9px;padding:10px 18px}
 
   .hero{min-height:100vh;background:#050d1a;border-bottom:1px solid rgba(63,209,201,.16);isolation:isolate}
-  #flowfield{opacity:.48}
+  #flowfield{opacity:.78}
   .hero::before{content:'';position:absolute;inset:0;background:
     radial-gradient(circle at 74% 36%,rgba(0,224,220,.16),transparent 28%),
     radial-gradient(circle at 88% 70%,rgba(255,95,67,.08),transparent 25%),
@@ -2723,6 +2723,204 @@
     }
   }
 
+
+  /* ---------- HERO PORTALS: ADD PROJECTS ---------- */
+  .hero-portals{
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  }
+
+  @media(max-width:1050px){
+    .hero-portals{
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    }
+  }
+
+  @media(max-width:560px){
+    .hero-portals{
+      grid-template-columns:1fr !important;
+    }
+  }
+
+
+  /* =========================================================
+     CFD STREAMLINE / FLOW BACKGROUND — INCREASE VISIBILITY
+     ========================================================= */
+
+  /* Keep the flow effect subtle but clearly visible. */
+  #flow-canvas,
+  #streamline-canvas,
+  .flow-canvas,
+  .streamline-canvas,
+  .flow-field,
+  .streamlines,
+  .hero-flow,
+  .hero-streamlines,
+  canvas[data-flow],
+  canvas[data-streamlines]{
+    opacity:.72 !important;
+    filter:
+      brightness(1.35)
+      contrast(1.14)
+      drop-shadow(0 0 4px rgba(63,209,201,.18)) !important;
+  }
+
+  /* SVG-based streamline implementations. */
+  .flow-field svg,
+  .streamlines svg,
+  .hero-flow svg,
+  .hero-streamlines svg{
+    opacity:.78 !important;
+    filter:drop-shadow(0 0 4px rgba(63,209,201,.16));
+  }
+
+  .flow-field path,
+  .streamlines path,
+  .hero-flow path,
+  .hero-streamlines path{
+    stroke-opacity:.68 !important;
+  }
+
+  /* If the arrows themselves are separate SVG markers. */
+  .flow-field marker path,
+  .streamlines marker path,
+  .hero-flow marker path,
+  .hero-streamlines marker path,
+  .flow-arrow,
+  .streamline-arrow{
+    opacity:.82 !important;
+  }
+
+  @media(max-width:760px){
+    #flow-canvas,
+    #streamline-canvas,
+    .flow-canvas,
+    .streamline-canvas,
+    .flow-field,
+    .streamlines,
+    .hero-flow,
+    .hero-streamlines,
+    canvas[data-flow],
+    canvas[data-streamlines]{
+      opacity:.58 !important;
+    }
+  }
+
+
+  /* =========================================================
+     GLOBAL CFD FLOWFIELD — ENTIRE PORTFOLIO
+     ========================================================= */
+
+  #flowfield.global-flowfield{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100vh !important;
+    z-index:0 !important;
+    pointer-events:none !important;
+    opacity:.72 !important;
+    mix-blend-mode:screen;
+    filter:
+      brightness(1.18)
+      contrast(1.08)
+      drop-shadow(0 0 4px rgba(63,209,201,.14));
+  }
+
+  /* All visible site content sits safely above the global CFD field. */
+  body > header,
+  body > section,
+  body > footer{
+    position:relative;
+    z-index:2;
+  }
+
+  header.nav{
+    z-index:5000 !important;
+  }
+
+  /* Let the global flow field remain visible through the hero as well. */
+  .hero{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5,13,26,.94) 0%,
+        rgba(5,13,26,.74) 43%,
+        rgba(5,13,26,.40) 100%
+      ) !important;
+  }
+
+  /* Section surfaces stay dark, but not fully opaque, so the flow is visible
+     in open background areas without competing with text/cards. */
+  #about,
+  #experience,
+  #education,
+  #skills,
+  #projects,
+  #research,
+  #awards,
+  #organizations,
+  #contact{
+    background:rgba(5,13,26,.78);
+  }
+
+  /* Alternate sections very slightly so the page keeps depth. */
+  #experience,
+  #skills,
+  #research,
+  #organizations{
+    background:rgba(7,16,29,.74);
+  }
+
+  /* Keep actual content containers readable above the moving field. */
+  .wrap,
+  .hero-inner{
+    position:relative;
+    z-index:3;
+  }
+
+  /* Cards/panels remain sufficiently opaque for readability. */
+  .job,
+  .skill-card,
+  .project-preview,
+  .featured-paper,
+  .compact-card,
+  .contact-form-wrap,
+  .meta-box,
+  .zoom-card,
+  .portal-card{
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+  }
+
+  /* On small screens reduce motion visibility slightly. */
+  @media(max-width:760px){
+    #flowfield.global-flowfield{
+      opacity:.52 !important;
+      filter:
+        brightness(1.12)
+        contrast(1.05)
+        drop-shadow(0 0 3px rgba(63,209,201,.10));
+    }
+
+    #about,
+    #experience,
+    #education,
+    #skills,
+    #projects,
+    #research,
+    #awards,
+    #organizations,
+    #contact{
+      background:rgba(5,13,26,.86);
+    }
+  }
+
+  /* Respect reduced-motion preference. */
+  @media(prefers-reduced-motion:reduce){
+    #flowfield.global-flowfield{
+      opacity:.28 !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -2745,8 +2943,8 @@
 <div aria-hidden="true" class="mobile-menu"><a href="#about">Profile</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#awards">Awards</a><a href="#organizations">Organizations</a><a href="#contact">Contact</a></div>
 </div>
 </header>
+<canvas id="flowfield" class="global-flowfield" aria-hidden="true"></canvas>
 <section class="hero" id="home">
-<canvas id="flowfield"></canvas>
 <div aria-hidden="true" class="hero-orb hero-orb-one"></div>
 <div aria-hidden="true" class="hero-orb hero-orb-two"></div>
 <div class="hero-inner hero-dashboard">
@@ -2771,6 +2969,13 @@
 <a class="portal-card" href="#experience"><span class="portal-icon">▣</span><strong>Experience</strong><small>Professional roles and engineering work</small><b>→</b></a>
 <a class="portal-card" href="#education"><span class="portal-icon">◇</span><strong>Education</strong><small>Academic background and qualifications</small><b>→</b></a>
 <a class="portal-card" href="#skills"><span class="portal-icon">⚙</span><strong>Skills</strong><small>Technical tools and competencies</small><b>→</b></a>
+
+<a class="portal-card" href="#projects">
+<span class="portal-icon">◇</span>
+<strong>Projects</strong>
+<small>Technical projects and detailed case studies</small>
+<b>→</b>
+</a>
 <a class="portal-card" href="#research"><span class="portal-icon">△</span><strong>Research</strong><small>Papers, solvers and research areas</small><b>→</b></a>
 <a class="portal-card" href="#awards"><span class="portal-icon">♕</span><strong>Awards</strong><small>Scholarships and achievements</small><b>→</b></a>
 <a class="portal-card" href="#organizations"><span class="portal-icon">◉</span><strong>Organizations</strong><small>Memberships and activities</small><b>→</b></a>
@@ -3274,13 +3479,20 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
 (function(){
   const canvas = document.getElementById('flowfield');
   const ctx = canvas.getContext('2d');
-  const hero = document.querySelector('.hero');
   let w, h, particles;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function resize(){
-    w = canvas.width = hero.clientWidth;
-    h = canvas.height = hero.clientHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    w = window.innerWidth;
+    h = window.innerHeight;
+
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   function noiseField(x, y, t){
@@ -3293,7 +3505,7 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
 
   function initParticles(){
     particles = [];
-    const count = Math.min(90, Math.floor(w/14));
+    const count = Math.min(125, Math.max(70, Math.floor(w/11)));
     for(let i=0;i<count;i++){
       particles.push({
         x: Math.random()*w,
@@ -3305,7 +3517,7 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
   }
 
   function draw(t){
-    ctx.fillStyle = 'rgba(10,18,31,0.12)';
+    ctx.fillStyle = 'rgba(10,18,31,0.085)';
     ctx.fillRect(0,0,w,h);
 
     particles.forEach(p=>{
@@ -3322,12 +3534,15 @@ Built a parametric FEM-to-regression framework for prismatic and S-shaped Nano E
       const g = Math.round(209 - speedNorm*(209-122));
       const b = Math.round(201 - speedNorm*(201-89));
 
-      ctx.strokeStyle = `rgba(${r},${g},${b},0.5)`;
-      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = `rgba(${r},${g},${b},0.78)`;
+      ctx.shadowColor = `rgba(${r},${g},${b},0.34)`;
+      ctx.shadowBlur = 4;
+      ctx.lineWidth = 1.55;
       ctx.beginPath();
       ctx.moveTo(px,py);
       ctx.lineTo(p.x,p.y);
       ctx.stroke();
+      ctx.shadowBlur = 0;
 
       if(p.life<=0 || p.x<0 || p.x>w || p.y<0 || p.y>h){
         p.x = Math.random()*w;
